@@ -7,36 +7,35 @@ import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachadaIF.FachadaIF;
 import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorProduto;
 import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorProdutoIF;
+import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorUsuario;
+import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorUsuarioIF;
 
 public class Fachada implements FachadaIF {
 	
 	GerenciadorProdutoIF gProduto = new GerenciadorProduto();
+	GerenciadorUsuarioIF gUsuario = new GerenciadorUsuario();
 
 	@Override
 	public void adicionaUsuario(String email, String senha, String nome)
 			throws HumQueCaroException {
-		// TODO Auto-generated method stub
-		
+		gUsuario.adicionaUsuario(email, senha, nome);
 	}
 
 	@Override
 	public void alteraUsuario(String email, String atributo, String novoValor)
 			throws HumQueCaroException {
-		// TODO Auto-generated method stub
-		
+		gUsuario.alteraUsuario(email, atributo, novoValor);
 	}
 
 	@Override
 	public void removeUsuario(String email, String senha)
 			throws HumQueCaroException {
-		// TODO Auto-generated method stub
-		
+		gUsuario.removeUsuario(email, senha);
 	}
 
 	@Override
 	public Usuario buscaUsuario(String email) throws HumQueCaroException {
-		// TODO Auto-generated method stub
-		return null;
+		return gUsuario.buscaUsuario(email);
 	}
 
 	@Override
