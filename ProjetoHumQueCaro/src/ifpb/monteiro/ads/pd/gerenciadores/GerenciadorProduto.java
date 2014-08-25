@@ -4,6 +4,7 @@ import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachada.FachadaBD;
 import ifpb.monteiro.ads.pd.fachadaIF.FachadaBancoIF;
+import ifpb.monteiro.ads.pd.validacao.Validacao;
 
 public class GerenciadorProduto implements GerenciadorProdutoIF {
 	
@@ -16,10 +17,15 @@ public class GerenciadorProduto implements GerenciadorProdutoIF {
 	@Override
 	public boolean adicionaProduto(String nomeProduto, String codigo,
 			String fabricante) throws HumQueCaroException {
-		if (pDAO.buscaProduto(codigo) != null) {
+		Validacao.validaEntrada(nomeProduto, "Campo nome do produto invalido");
+		Validacao.validaEntrada(codigo, "Campo codigo invalido");
+		Validacao.validaEntrada(fabricante, "Campo Fabricante invalido");
+		try {
+			pDAO.addProduto(new Produto(nomeProduto, codigo, fabricante));
+		} catch (HumQueCaroException e) {
+			System.err.println(e.getMessage());
 			return false;
 		}
-		pDAO.addProduto(new Produto(nomeProduto, codigo, fabricante));
 		return true;
 	}
 

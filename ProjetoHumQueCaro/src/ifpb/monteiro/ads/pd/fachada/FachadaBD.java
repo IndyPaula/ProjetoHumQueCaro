@@ -55,8 +55,6 @@ public class FachadaBD implements FachadaBancoIF {
 
 	@Override
 	public Produto buscaProduto(String codigo) throws HumQueCaroException {
-		// TODO Exception com mensagem "Campo c�digo inv�lido" caso seja
-		// nulo, vazio ou n�o exista.
 		return pDAO.procura(codigo);
 	}
 
