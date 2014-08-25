@@ -6,6 +6,12 @@ public class Produto {
 	private String codigo;
 	private String fabricante;
 	
+	public static final String ATRIBUTO_NOME = "nome";
+	public static final String ATRIBUTO_FABRICANTE = "fabricante";
+	
+	public Produto() {
+	}
+	
 	public String getNome() {
 		return nome;
 	}

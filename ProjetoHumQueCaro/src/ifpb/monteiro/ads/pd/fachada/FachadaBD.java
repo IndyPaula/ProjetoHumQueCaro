@@ -61,9 +61,9 @@ public class FachadaBD implements FachadaBancoIF{
 	public void alteraProduto(String codigo, String atributo, String novoValor)
 			throws HumQueCaroException {
 		Produto produto = pDAO.procura(codigo);
-		if (atributo.equals("nome")) {
+		if (atributo.equals(Produto.ATRIBUTO_NOME)) {
 			produto.setNome(novoValor);
-		} else if (atributo.equals("fabricante")) {
+		} else if (atributo.equals(Produto.ATRIBUTO_FABRICANTE)) {
 			produto.setFabricante(novoValor);
 		} else {
 			throw new HumQueCaroException("Campo atributo inválido");
