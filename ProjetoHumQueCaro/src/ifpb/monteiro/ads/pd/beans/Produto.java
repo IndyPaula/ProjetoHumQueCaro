@@ -21,6 +21,9 @@ public class Produto {
 	public String getCodigo() {
 		return codigo;
 	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 	
 	@Override
 	public boolean equals(Object obj) {
