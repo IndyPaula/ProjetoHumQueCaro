@@ -7,10 +7,10 @@ import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 
 
 /**
-Instituto Federal de Educa��o, Ci�ncia e Tecnologia da Paraiba
+Instituto Federal de Educacao, Ciencia e Tecnologia da Paraiba
 * Curso ADS
-* Projeto: HumQueCaro!!! 
-* @author Prof�. Mirna Maia
+* Projeto: Hum...QueCaro!!! 
+* @author Prof. Mirna Maia
 * Disciplina: Processo de Desenvolvimento
 */
 
@@ -24,25 +24,25 @@ Instituto Federal de Educa��o, Ci�ncia e Tecnologia da Paraiba
 public interface FachadaIF {
 
 	/**
-	 * Esse m�todo cria um Usu�rio com os atributos passados como par�metros.
+	 * Esse metodo cria um Usuário com os atributos passados como parametros.
 	 * 
 	 * @param senha
 	 *            A senha utilizada para acessar o sistema.
 	 * @param nome
-	 *            O nome do usu�rio.
+	 *            O nome do usuario.
 	 *@param nome
-	 *            Email do usu�rio.
+	 *            Email do usuario.
 	 * @throws HumQueCaroException
-	 *             Caso email (!email@algumaCoisa.com), nome(Apenas letras) ou senha possuam valores inv�lidos, como nulo ou "",
-	 *             devem ser apresentados as mensagens  <i>Campo email inv�lido <i>,<i>Campo nome
-	 *             inv�lido</i> e <i>Campo senha inv�lida</i> respectivamente.
+	 *             Caso email (!email@algumaCoisa.com), nome(Apenas letras) ou senha possuam valores invalidos, como nulo ou "",
+	 *             devem ser apresentados as mensagens  <i>Campo email invalido <i>,<i>Campo nome
+	 *             invalido</i> e <i>Campo senha invalida</i> respectivamente.
 	 * 
 	 */
 	public void adicionaUsuario(String email, String senha, String nome)
 			throws HumQueCaroException;
 	
 	/**
-	 * Ajusta o atributo para o novo valor passado como par�metro. O us�ario poder� 
+	 * Ajusta o atributo para o novo valor passado como parametro. O usuario podera
 	 * alterar apenas o campo nome ou senha.
 	 * 
 	 * @param atributo
@@ -53,15 +53,15 @@ public interface FachadaIF {
 	 * @throws HumQueCaroException
 	 *             Caso o campo atributo seja nulo ou vazio ou diferente de
 	 *             senha ou nome, deve ser apresentada a mensagem
-	 *             "Campo atributo inv�lido". Caso atributo seja senha e o novo
+	 *             "Campo atributo invalido". Caso atributo seja senha e o novo
 	 *             valor sendo nulo ou vazio, deve ser apresentada a mensagem
-	 *             "Campo novo valor inv�lido."
+	 *             "Campo novo valor invalido."
 	 */
 	public void alteraUsuario(String atributo, String novoValor)
 			throws HumQueCaroException;
 
 	/**
-	 * Remove o usu�rio cujo cpf e senha foram passados como par�metro.
+	 * Remove o usuario cujo cpf e senha foram passados como parametro.
 	 * 
 	 * @param email
 	 *            O email do usuario que deve ser removido.
@@ -70,8 +70,8 @@ public interface FachadaIF {
 	 * 			
 	 * @throws HumQueCaroException
 	 *             Caso o email seja invalido, deve ser apresentada a mensagem
-	 *             "Campo email invalido". Caso a senha n�o seja a mesma que o usu�rio cadastrou, deve
-	 *             ser apresentada a mensagem de erro "Opera��o inv�lida".
+	 *             "Campo email invalido". Caso a senha nao seja a mesma que o usuario cadastrou, deve
+	 *             ser apresentada a mensagem de erro "Operacao invalida"
 	 */
 	public void removeUsuario(String email, String senha)
 			throws HumQueCaroException;
@@ -89,27 +89,27 @@ public interface FachadaIF {
 			throws HumQueCaroException;
 	
 	/**
-	 * Esse m�todo adiciona produtos.
+	 * Esse metodo adiciona produtos.
 	 * 
 	 * @param nomeProduto
 	 *            nome do produto 
 	 * @param codigo
-	 *            Codigo de identifica��o do produto
+	 *            Codigo de identificacao do produto
 	 * @param fabricante
 	 *            Nome do fabricante do produto.
 	 * @throws HumQueCaroException
-	 *             Caso nomeProduto, c�digo ou o fabricante possuam valores inv�lidos, como nulo ou "",
-	 *             devem ser apresentados as mensagens  <i>Campo nome do produto inv�lido <i>,<i>Campo codigo
-	 *             inv�lido</i> e <i>Campo Fabricante inv�lido</i> respectivamente 
+	 *             Caso nomeProduto, codigo ou o fabricante possuam valores invalidos, como nulo ou "",
+	 *             devem ser apresentados as mensagens  <i>Campo nome do produto invalido <i>,<i>Campo codigo
+	 *             invalido</i> e <i>Campo Fabricante invalido</i> respectivamente 
 	 * @return <i>true</i> caso o produto tenha sido cadastrado com sucesso e
-	 *         <i>false</i> caso o sistema j� possua um produto com o mesmo
+	 *         <i>false</i> caso o sistema ja possua um produto com o mesmo
 	 *         codigo identificador.
 	 */
 	public boolean adicionaProduto(String nomeProduto, String codigo, String fabricante)
 			throws HumQueCaroException;
 	
 	/**
-	 * Ajusta o atributo para o novo valor passado como par�metro. Peder� altera 
+	 * Ajusta o atributo para o novo valor passado como parametro. Pedera altera 
 	 * apenas os campos nome do Produto ou a empresa Fabricante.
 	 * 
 	 * @param atributo
@@ -121,22 +121,22 @@ public interface FachadaIF {
 	 * @throws HumQueCaroException
 	 *             Caso o campo atributo seja nulo ou vazio ou diferente de
 	 *             nomeProduto ou fabricante, deve ser apresentada a mensagem
-	 *             "Campo atributo inv�lido". "Caso o campo codigo seja nulo ou
+	 *             "Campo atributo invalido". "Caso o campo codigo seja nulo ou
 	 * 		vazio ou nao exista, deve ser apresentada a mensagem
-	 *             "Campo codigo inv�lido"
+	 *             "Campo codigo invalido"
 	 */
 	public void alteraProduto(String codigo, String atributo, String novoValor)
 			throws HumQueCaroException;
 
 	/**
-	 * Remove um produto cujo codigo de identifica��o.
+	 * Remove um produto cujo codigo de identificacao.
 	 * 
 	 * @param codigo
 	 *            O codigo do produto que deve ser removido.
 	 * 
 	 * @throws HumQueCaroException
 	 *             Caso o codigo seja invalido, deve ser apresentada a mensagem
-	 *             "Campo codigo de identifica��o invalido". 
+	 *             "Campo codigo de identificacao invalido". 
 	 *       
 	 */
 	public void removeProduto(String codigo)
@@ -146,7 +146,7 @@ public interface FachadaIF {
 	 * Busca o produto no banco.
 	 * 
 	 * @param codigo
-	 * 		Codigo de identifica��o do produto.
+	 * 		Codigo de identificacao do produto.
 	 * @return Produto
 	 * @throws HumQueCaroException
 	 */
@@ -154,22 +154,22 @@ public interface FachadaIF {
 			throws HumQueCaroException;
 	
 	/**
-	 * Esse m�todo adiciona Cliente.
+	 * Esse metodo adiciona Cliente.
 	 * 
 	 * @param nome
 	 *            nome do Cliente 
 	 * @param telefone
 	 *            Numero do telefone do Cliente
 	 * @throws HumQueCaroException
-	 *             Caso nome, telefone possuam valores inv�lidos, como nulo ou "",
-	 *             devem ser apresentados as mensagens  <i>Campo nome do Cliente inv�lido <i>,<i>Campo telefone
-	 *             inv�lido</i> respectivamente 
+	 *             Caso nome, telefone possuam valores invalidos, como nulo ou "",
+	 *             devem ser apresentados as mensagens  <i>Campo nome do Cliente invalido <i>,<i>Campo telefone
+	 *             invalido</i> respectivamente 
 	 */
 	public void adicionaCliente(String nome, String telefone)
 			throws HumQueCaroException;
 	
 	/**
-	 * Ajusta o Cliente para o novo valor passado como par�metro. Peder� altera 
+	 * Ajusta o Cliente para o novo valor passado como parametro. Pedera altera 
 	 * apenas os campos nome do Cliente ou numero de telefone.
 	 * 
 	 * @param atributo
@@ -179,13 +179,13 @@ public interface FachadaIF {
 	 * @throws HumQueCaroException
 	 *             Caso o campo atributo seja nulo ou vazio ou diferente de
 	 *             nome , deve ser apresentada a mensagem
-	 *             "Campo atributo inv�lido". 
+	 *             "Campo atributo invalido". 
 	 */
 	public void alteraCliente(String telefone, String atributo, String novoValor)
 			throws HumQueCaroException;
 
 	/**
-	 * Remove um Cliente cujo cpf foi passado como par�metro.
+	 * Remove um Cliente cujo cpf foi passado como parametro.
 	 * 
 	 * @param telefone
 	 *            O telefone do cliente que deve ser removido.
