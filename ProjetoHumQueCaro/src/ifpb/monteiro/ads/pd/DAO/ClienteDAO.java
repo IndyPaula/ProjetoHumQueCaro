@@ -6,8 +6,7 @@ public class ClienteDAO implements DAO<Cliente>{
 
 	@Override
 	public void adiciona(Cliente algo) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
