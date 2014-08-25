@@ -1,6 +1,7 @@
 package ifpb.monteiro.ads.pd.gerenciadores;
 
 import ifpb.monteiro.ads.pd.beans.Usuario;
+import ifpb.monteiro.ads.pd.enumerations.Dados;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachada.FachadaBD;
 
@@ -20,7 +21,11 @@ public class GerenciadorUsuario implements GerenciadorUsuarioIF {
 	@Override
 	public void alteraUsuario(String email, String atributo, String novoValor)
 			throws HumQueCaroException {
-		fachadaBd.alteraUsuario(new Usuario(email, atributo));
+		if(Dados.NOME.getNome().equals(atributo)){
+			
+		}else if (Dados.SENHA.getNome().equals(atributo)){
+			
+		}
 	}
 
 	@Override
