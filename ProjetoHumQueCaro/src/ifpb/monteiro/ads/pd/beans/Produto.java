@@ -2,9 +2,9 @@ package ifpb.monteiro.ads.pd.beans;
 
 public class Produto {
 	
-	String nome;
-	String codigo;
-	String fabricante;
+	private String nome;
+	private String codigo;
+	private String fabricante;
 	
 	public String getNome() {
 		return nome;

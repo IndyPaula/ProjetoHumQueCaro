@@ -10,8 +10,12 @@ import ifpb.monteiro.ads.pd.fachadaIF.FachadaBancoIF;
 
 public class FachadaBD implements FachadaBancoIF{
 	
-	DAO<Produto> pDAO = new ProdutoDAO();
+	private DAO<Produto> pDAO;
 
+	public FachadaBD() {
+		pDAO = new ProdutoDAO();
+	}
+	
 	@Override
 	public void addUsuario(Usuario usuario) throws HumQueCaroException {
 		// TODO Auto-generated method stub
