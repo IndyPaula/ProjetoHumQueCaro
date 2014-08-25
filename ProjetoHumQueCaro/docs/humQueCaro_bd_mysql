@@ -1,0 +1,37 @@
+-- CRIA A DATABASE
+create database projeto_HumQueCaro;
+
+-- SELECIONA A DATABASE
+use projeto_HumQueCaro;
+
+
+-- CRIA TABELA USUARIO
+create table usuarios(
+	codigo_usuario int not null auto_increment,
+	email varchar(60) not null,
+	nome varchar(80) not null,
+	senha varchar(30) not null,
+	PRIMARY KEY (codigo_usuario),
+	UNIQUE (email)
+);
+
+
+-- CRIA TABELA PRODUTO
+create table produtos(
+	codigo_produtos int not null auto_increment,
+	codigo varchar(60) not null,
+	nome varchar(80) not null,
+	fabricante varchar(80) not null,
+	PRIMARY KEY (codigo_produtos),
+	UNIQUE (codigo)
+);
+
+
+-- CRIA TABELA CLIENTE
+create table clientes(
+	codigo_cliente int not null auto_increment,
+	telefone char(25) not null,
+	nome varchar(80) not null,
+	PRIMARY KEY (codigo_cliente),
+	UNIQUE (telefone)
+);
