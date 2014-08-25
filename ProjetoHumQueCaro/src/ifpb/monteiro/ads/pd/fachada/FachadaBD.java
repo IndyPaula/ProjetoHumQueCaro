@@ -76,7 +76,7 @@ public class FachadaBD implements FachadaBancoIF {
 
 	@Override
 	public void addCliente(Cliente cliente) throws HumQueCaroException {
-		// TODO Auto-generated method stub
+		cliDAO.adiciona(cliente);
 
 	}
 
@@ -88,13 +88,14 @@ public class FachadaBD implements FachadaBancoIF {
 
 	@Override
 	public Cliente buscaCliente(String telefone) throws HumQueCaroException {
+		Cliente c = cliDAO.procura(telefone);
 		if (telefone == null || telefone.equals("")) {
 			throw new HumQueCaroException("Campo telefone inválido");
 		}
-		if (cliDAO.procura(telefone) == null) {
-			throw new HumQueCaroException("Cliente não existe");
+		if (c != null) {
+			return c;
 		}
-		return cliDAO.procura(telefone);
+		return null;
 	}
 
 	@Override

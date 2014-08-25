@@ -15,7 +15,7 @@ public class GerenciadorCliente implements GerenciadorClienteIF {
 	@Override
 	public void adicionaCliente(String nome, String telefone)
 			throws HumQueCaroException {
-		if (buscaCliente(telefone).equals(null)
+		if (buscaCliente(telefone) == null
 				&& verificaAtributos(nome, telefone)) {
 			cliDAO.addCliente(new Cliente(nome, telefone));
 		}
