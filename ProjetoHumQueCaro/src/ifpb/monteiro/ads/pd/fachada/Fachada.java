@@ -5,8 +5,12 @@ import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.beans.Usuario;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachadaIF.FachadaIF;
+import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorProduto;
+import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorProdutoIF;
 
 public class Fachada implements FachadaIF {
+	
+	GerenciadorProdutoIF gProduto = new GerenciadorProduto();
 
 	@Override
 	public void adicionaUsuario(String email, String senha, String nome)
@@ -38,27 +42,23 @@ public class Fachada implements FachadaIF {
 	@Override
 	public boolean adicionaProduto(String nomeProduto, String codigo,
 			String fabricante) throws HumQueCaroException {
-		// TODO Auto-generated method stub
-		return false;
+		return gProduto.adicionaProduto(nomeProduto, codigo, fabricante);
 	}
 
 	@Override
 	public void alteraProduto(String codigo, String atributo, String novoValor)
 			throws HumQueCaroException {
-		// TODO Auto-generated method stub
-		
+		gProduto.alteraProduto(codigo, atributo, novoValor);
 	}
 
 	@Override
 	public void removeProduto(String codigo) throws HumQueCaroException {
-		// TODO Auto-generated method stub
-		
+		gProduto.removeProduto(codigo);
 	}
 
 	@Override
 	public Produto buscaProduto(String codigo) throws HumQueCaroException {
-		// TODO Auto-generated method stub
-		return null;
+		return gProduto.buscaProduto(codigo);
 	}
 
 	@Override
