@@ -129,7 +129,7 @@ public interface FachadaIF {
 			throws HumQueCaroException;
 
 	/**
-	 * Remove um produto cujo codigo de identifica��o e o nome foram passados como par�metro.
+	 * Remove um produto cujo codigo de identifica��o.
 	 * 
 	 * @param codigo
 	 *            O codigo do produto que deve ser removido.
