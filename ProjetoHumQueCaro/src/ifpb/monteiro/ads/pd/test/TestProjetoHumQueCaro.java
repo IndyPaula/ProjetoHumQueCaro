@@ -7,7 +7,7 @@ import ifpb.monteiro.ads.pd.fachada.Fachada;
 import org.junit.Test;
 
 /*
- * Classe para testes JUnit.
+ * Classe para testes JUnit. >>> EM ANDAMENTO <<<
  * 
  * @author Deivid Azevedo
  */
