@@ -23,9 +23,9 @@ public class GerenciadorUsuario implements GerenciadorUsuarioIF {
 			throws HumQueCaroException {
 		//TODO Procurar uma forma eficiente de fazer isso
 		if(Dados.NOME.getNome().equals(atributo)){
-			fachadaBd.addUsuario(new Usuario(email, null, novoValor));
+			fachadaBd.alteraUsuario(new Usuario(email, null, novoValor));
 		}else if (Dados.SENHA.getNome().equals(atributo)){
-			fachadaBd.addUsuario(new Usuario(email, novoValor,null));
+			fachadaBd.alteraUsuario(new Usuario(email, novoValor,null));
 		}
 	}
 
