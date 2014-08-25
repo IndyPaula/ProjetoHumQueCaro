@@ -30,7 +30,7 @@ public class GerenciadorProduto implements GerenciadorProdutoIF {
 	@Override
 	public void alteraProduto(String codigo, String atributo, String novoValor)
 			throws HumQueCaroException {
-		//TODO <<NÂO TERMINADO>>
+		pDAO.alteraProduto(codigo, atributo, novoValor);
 	}
 
 	@Override

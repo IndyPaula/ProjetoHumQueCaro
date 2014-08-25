@@ -49,13 +49,22 @@ public class FachadaBD implements FachadaBancoIF{
 
 	@Override
 	public Produto buscaProduto(String codigo) throws HumQueCaroException {
+		//TODO Exception com mensagem "Campo código inválido" caso seja nulo, vazio ou não exista.
 		return pDAO.procura(codigo);
 	}
 
 	@Override
 	public void alteraProduto(String codigo, String atributo, String novoValor)
 			throws HumQueCaroException {
-		//TODO <<NÃO TERMINADO>>
+		Produto produto = pDAO.procura(codigo);
+		if (atributo.equals("nome")) {
+			produto.setNome(novoValor);
+		} else if (atributo.equals("fabricante")) {
+			produto.setFabricante(novoValor);
+		} else {
+			throw new HumQueCaroException("Campo atributo inválido");
+		}
+		pDAO.altera(produto);
 	}
 
 	@Override
