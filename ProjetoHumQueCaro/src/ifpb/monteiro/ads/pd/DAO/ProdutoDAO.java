@@ -32,7 +32,7 @@ public class ProdutoDAO extends DAO<Produto>{
 
 	@Override
 	public void altera(Produto algo) throws HumQueCaroException{
-		// TODO Terminar
+		// TODO Terminar na próxima sprint.
 		try {
 			abrirBanco();
 			getStmt().executeUpdate("");
@@ -44,7 +44,13 @@ public class ProdutoDAO extends DAO<Produto>{
 
 	@Override
 	public Produto procura(String algo) throws HumQueCaroException{
-		// TODO Auto-generated method stub
+		// TODO Terminar
+		try {
+			abrirBanco();
+			fecharBanco();
+		} catch (Exception e) {
+			throw new HumQueCaroException("Erro no altera de Produto " + e.getMessage());
+		}
 		return null;
 	}
 

@@ -24,9 +24,15 @@ public class TestCliente {
 			fail("Cliente já cadastrado");
 		}
 
-		// TESTE PARA CLIENTE JÁ CADASTRADO ATRAVÉS DESTE TELEFONE
+		// TESTE PARA CLIENTES JÁ CADASTRADOS ATRAVÉS DO TELEFONE
 		try {
 			fachada.adicionaCliente("Mariquinha", "12345678901");
+			fail("Cliente já cadastrado");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.adicionaCliente("Mariquinha", "11111111111");
 			fail("Cliente já cadastrado");
 		} catch (HumQueCaroException e) {
 		}
@@ -93,10 +99,96 @@ public class TestCliente {
 		}
 
 		try {
+			fachada.alteraCliente("12345678901", "nome", "José da Feira");
+			assertEquals("12345678901, José da Feira",
+					fachada.buscaCliente("12345678901"));
+		} catch (HumQueCaroException e) {
+			fail("Cliente não cadastrado");
+		}
+
+		// TESTES PARA CLIENTES, ATRIBUTOS E NOVOS VALORES INVÁLIDOS
+		try {
 			fachada.alteraCliente("11111111111", "telefone", "00000000000");
 			fail("Cliente não cadastrado");
 		} catch (HumQueCaroException e) {
 		}
+
+		try {
+			fachada.alteraCliente("11111111111", "", "Ana");
+			fail("Campo atributo inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.alteraCliente("11111111111", null, "Ana");
+			fail("Campo atributo inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.alteraCliente("11111111111", "nome", "");
+			fail("Campo novo valor inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.alteraCliente("11111111111", "telefone", null);
+			fail("Campo novo valor inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.alteraCliente("11111111111", "nomes", "Luana");
+			fail("Campo atributo inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.alteraCliente("11111111111", "telefonee", "12121212121");
+			fail("Campo atributo inválido");
+		} catch (HumQueCaroException e) {
+		}
+
 	}
 
+	@Test
+	public void testRemoveCliente() {
+		try {
+			fachada.removeCliente("11111111110");
+		} catch (HumQueCaroException e) {
+			fail("Cliente não cadastrado");
+		}
+
+		// REMOVENDO CLIENTES JÁ REMOVIDOS E VALORES INVÁLIDOS
+		try {
+			fachada.removeCliente("11111111110");
+			fail("Cliente não cadastrado");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.removeCliente("");
+			fail("Campo inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.removeCliente(null);
+			fail("Campo inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.removeCliente("123456789012");
+			fail("Campo inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.removeCliente("1234567890");
+			fail("Campo inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+	}
 }
