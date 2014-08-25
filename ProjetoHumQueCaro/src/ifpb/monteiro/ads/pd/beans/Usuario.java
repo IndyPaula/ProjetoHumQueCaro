@@ -10,6 +10,11 @@ public class Usuario {
 		this.nome = nome;
 	}
 
+	public Usuario(String email, String senha) {
+		this.email = email;
+		this.senha = senha;
+	}
+
 	public int getCodigoUsuario() {
 		return codigoUsuario;
 	}
