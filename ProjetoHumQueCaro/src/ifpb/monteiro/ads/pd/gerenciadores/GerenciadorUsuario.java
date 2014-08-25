@@ -14,26 +14,27 @@ public class GerenciadorUsuario implements GerenciadorUsuarioIF {
 	@Override
 	public void adicionaUsuario(String email, String senha, String nome)
 			throws HumQueCaroException {
-		fachadaBd.addUsuario(new Usuario(email, senha,nome));
+		fachadaBd.addUsuario(new Usuario(email, senha, nome));
 	}
 
 	@Override
 	public void alteraUsuario(String email, String atributo, String novoValor)
 			throws HumQueCaroException {
-		fachadaBd.alteraUsuario(email, atributo, novoValor);
+		fachadaBd.alteraUsuario(new Usuario(email, atributo));
 	}
 
 	@Override
 	public void removeUsuario(String email, String senha)
 			throws HumQueCaroException {
-		// TODO Auto-generated method stub
-
+		if (buscaUsuario(email).getSenha().equals(senha))
+			fachadaBd.removeUsuario(new Usuario(email, senha));
+		else
+			throw new HumQueCaroException("Senha ou Email Invalido");
 	}
 
 	@Override
 	public Usuario buscaUsuario(String email) throws HumQueCaroException {
-		// TODO Auto-generated method stub
-		return null;
+		return fachadaBd.buscaUsuario(email);
 	}
 
 }

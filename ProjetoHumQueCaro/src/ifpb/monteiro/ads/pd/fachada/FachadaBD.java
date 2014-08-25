@@ -2,6 +2,7 @@ package ifpb.monteiro.ads.pd.fachada;
 
 import ifpb.monteiro.ads.pd.DAO.DAO;
 import ifpb.monteiro.ads.pd.DAO.ProdutoDAO;
+import ifpb.monteiro.ads.pd.DAO.UsuarioDAO;
 import ifpb.monteiro.ads.pd.beans.Cliente;
 import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.beans.Usuario;
@@ -11,34 +12,31 @@ import ifpb.monteiro.ads.pd.fachadaIF.FachadaBancoIF;
 public class FachadaBD implements FachadaBancoIF{
 	
 	private DAO<Produto> pDAO;
-
+	private DAO<Usuario> pUsuario;
 	public FachadaBD() {
 		pDAO = new ProdutoDAO();
+		pUsuario = new UsuarioDAO();
 	}
 	
 	@Override
 	public void addUsuario(Usuario usuario) throws HumQueCaroException {
-		// TODO Auto-generated method stub
-		
+		pUsuario.adiciona(usuario);
 	}
 
 	@Override
-	public void removeUsuario(Usuario usario) throws HumQueCaroException {
-		// TODO Auto-generated method stub
-		
+	public void removeUsuario(Usuario usuario) throws HumQueCaroException {
+		pUsuario.remove(usuario);
 	}
-
+	
 	@Override
 	public Usuario buscaUsuario(String email) throws HumQueCaroException {
-		// TODO Auto-generated method stub
-		return null;
+		return pUsuario.procura(email);
 	}
 
 	@Override
-	public void alteraUsuario(String email, String atributo, String novoValor)
+	public void alteraUsuario(Usuario usuario)
 			throws HumQueCaroException {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
