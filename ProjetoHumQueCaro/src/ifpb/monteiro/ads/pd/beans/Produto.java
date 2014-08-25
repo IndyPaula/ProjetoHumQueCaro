@@ -9,7 +9,10 @@ public class Produto {
 	public static final String ATRIBUTO_NOME = "nome";
 	public static final String ATRIBUTO_FABRICANTE = "fabricante";
 	
-	public Produto() {
+	public Produto(String nome, String codigo, String fabricante) {
+		this.nome = nome;
+		this.codigo = codigo;
+		this.fabricante = fabricante;
 	}
 	
 	public String getNome() {

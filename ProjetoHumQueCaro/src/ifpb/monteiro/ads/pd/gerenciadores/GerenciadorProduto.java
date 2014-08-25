@@ -7,24 +7,19 @@ import ifpb.monteiro.ads.pd.fachadaIF.FachadaBancoIF;
 
 public class GerenciadorProduto implements GerenciadorProdutoIF {
 	
-	private Produto produto;
 	private FachadaBancoIF pDAO;
 	
 	public GerenciadorProduto() {
-		produto = new Produto();
 		pDAO = new FachadaBD();
 	}
 
 	@Override
 	public boolean adicionaProduto(String nomeProduto, String codigo,
 			String fabricante) throws HumQueCaroException {
-		produto.setNome(nomeProduto);
-		produto.setCodigo(codigo);
-		produto.setFabricante(fabricante);
 		if (pDAO.buscaProduto(codigo) != null) {
 			return false;
 		}
-		pDAO.addProduto(produto);
+		pDAO.addProduto(new Produto(nomeProduto, codigo, fabricante));
 		return true;
 	}
 
@@ -36,8 +31,7 @@ public class GerenciadorProduto implements GerenciadorProdutoIF {
 
 	@Override
 	public void removeProduto(String codigo) throws HumQueCaroException {
-		produto.setCodigo(codigo);
-		pDAO.removeProduto(produto);
+		pDAO.removeProduto(new Produto(null, codigo, null));
 	}
 
 	@Override
