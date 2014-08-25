@@ -21,10 +21,11 @@ public class GerenciadorUsuario implements GerenciadorUsuarioIF {
 	@Override
 	public void alteraUsuario(String email, String atributo, String novoValor)
 			throws HumQueCaroException {
+		//TODO Procurar uma forma eficiente de fazer isso
 		if(Dados.NOME.getNome().equals(atributo)){
-			
+			fachadaBd.addUsuario(new Usuario(email, null, novoValor));
 		}else if (Dados.SENHA.getNome().equals(atributo)){
-			
+			fachadaBd.addUsuario(new Usuario(email, novoValor,null));
 		}
 	}
 
