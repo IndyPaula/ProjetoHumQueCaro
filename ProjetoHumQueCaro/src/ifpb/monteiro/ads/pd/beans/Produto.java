@@ -6,9 +6,6 @@ public class Produto {
 	private String codigo;
 	private String fabricante;
 	
-	public static final String ATRIBUTO_NOME = "nome";
-	public static final String ATRIBUTO_FABRICANTE = "fabricante";
-	
 	public Produto(String nome, String codigo, String fabricante) {
 		this.nome = nome;
 		this.codigo = codigo;

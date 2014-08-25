@@ -7,6 +7,7 @@ import ifpb.monteiro.ads.pd.DAO.UsuarioDAO;
 import ifpb.monteiro.ads.pd.beans.Cliente;
 import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.beans.Usuario;
+import ifpb.monteiro.ads.pd.enumerations.Dados;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachadaIF.FachadaBancoIF;
 
@@ -63,9 +64,9 @@ public class FachadaBD implements FachadaBancoIF {
 	public void alteraProduto(String codigo, String atributo, String novoValor)
 			throws HumQueCaroException {
 		Produto produto = pDAO.procura(codigo);
-		if (atributo.equals(Produto.ATRIBUTO_NOME)) {
+		if (atributo.equals(Dados.NOME)) {
 			produto.setNome(novoValor);
-		} else if (atributo.equals(Produto.ATRIBUTO_FABRICANTE)) {
+		} else if (atributo.equals(Dados.FABRICANTE)) {
 			produto.setFabricante(novoValor);
 		} else {
 			throw new HumQueCaroException("Campo atributo inv�lido");
