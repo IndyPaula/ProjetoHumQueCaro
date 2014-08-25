@@ -35,7 +35,7 @@ public class FachadaBD implements FachadaBancoIF{
 	}
 
 	@Override
-	public void alteraUsuario(String atributo, String novoValor)
+	public void alteraUsuario(String email, String atributo, String novoValor)
 			throws HumQueCaroException {
 		// TODO Auto-generated method stub
 		
@@ -53,7 +53,7 @@ public class FachadaBD implements FachadaBancoIF{
 
 	@Override
 	public Produto buscaProduto(String codigo) throws HumQueCaroException {
-		//TODO Exception com mensagem "Campo código inválido" caso seja nulo, vazio ou não exista.
+		//TODO Exception com mensagem "Campo cï¿½digo invï¿½lido" caso seja nulo, vazio ou nï¿½o exista.
 		return pDAO.procura(codigo);
 	}
 
@@ -66,7 +66,7 @@ public class FachadaBD implements FachadaBancoIF{
 		} else if (atributo.equals(Produto.ATRIBUTO_FABRICANTE)) {
 			produto.setFabricante(novoValor);
 		} else {
-			throw new HumQueCaroException("Campo atributo inválido");
+			throw new HumQueCaroException("Campo atributo invï¿½lido");
 		}
 		pDAO.altera(produto);
 	}

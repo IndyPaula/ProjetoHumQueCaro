@@ -57,7 +57,7 @@ public interface FachadaIF {
 	 *             valor sendo nulo ou vazio, deve ser apresentada a mensagem
 	 *             "Campo novo valor invalido."
 	 */
-	public void alteraUsuario(String atributo, String novoValor)
+	public void alteraUsuario(String email, String atributo, String novoValor)
 			throws HumQueCaroException;
 
 	/**

@@ -20,7 +20,7 @@ public class Fachada implements FachadaIF {
 	}
 
 	@Override
-	public void alteraUsuario(String atributo, String novoValor)
+	public void alteraUsuario(String email, String atributo, String novoValor)
 			throws HumQueCaroException {
 		// TODO Auto-generated method stub
 		

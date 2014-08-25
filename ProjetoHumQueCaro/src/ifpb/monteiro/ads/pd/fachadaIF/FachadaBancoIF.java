@@ -15,7 +15,7 @@ public interface FachadaBancoIF{
 
 	Usuario buscaUsuario (String email) throws HumQueCaroException;
 
-	void alteraUsuario (String atributo, String novoValor) throws HumQueCaroException;
+	void alteraUsuario (String email, String atributo, String novoValor) throws HumQueCaroException;
 
 	void addProduto (Produto produto) throws HumQueCaroException;
 
