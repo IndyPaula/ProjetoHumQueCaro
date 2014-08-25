@@ -1,7 +1,7 @@
 package ifpb.monteiro.ads.pd.enumerations;
 
 public enum Dados {
-	NOME("nome"), SENHA("senha");
+	NOME("nome"), SENHA("senha"), FABRICANTE("fabricante");
 
 	private String nome;
 
