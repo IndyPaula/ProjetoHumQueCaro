@@ -67,7 +67,7 @@ public class FachadaBD implements FachadaBancoIF {
 		} else if (atributo.equals(Dados.FABRICANTE)) {
 			produto.setFabricante(novoValor);
 		} else {
-			throw new HumQueCaroException("Campo atributo inv�lido");
+			throw new HumQueCaroException("Campo atributo invalido");
 		}
 		pDAO.altera(produto);
 	}
