@@ -4,6 +4,14 @@ public class Usuario {
 	private String email, senha, nome;
 	private int codigoUsuario;
 
+	
+	public Usuario(String email, String senha, String nome, int codigoUsuario) {
+		this.email = email;
+		this.senha = senha;
+		this.nome = nome;
+		this.codigoUsuario = codigoUsuario;
+	}
+
 	public Usuario(String email, String senha, String nome) {
 		this.email = email;
 		this.senha = senha;
@@ -46,6 +54,4 @@ public class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-
 }
