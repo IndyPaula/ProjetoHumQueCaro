@@ -1,6 +1,7 @@
 package ifpb.monteiro.ads.pd.gerenciadores;
 
 import ifpb.monteiro.ads.pd.beans.Usuario;
+import ifpb.monteiro.ads.pd.enumerations.Dados;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachada.FachadaBD;
 
@@ -14,26 +15,32 @@ public class GerenciadorUsuario implements GerenciadorUsuarioIF {
 	@Override
 	public void adicionaUsuario(String email, String senha, String nome)
 			throws HumQueCaroException {
-		fachadaBd.addUsuario(new Usuario(email, senha,nome));
+		fachadaBd.addUsuario(new Usuario(email, senha, nome));
 	}
 
 	@Override
 	public void alteraUsuario(String email, String atributo, String novoValor)
 			throws HumQueCaroException {
-		fachadaBd.alteraUsuario(email, atributo, novoValor);
+		//TODO Procurar uma forma eficiente de fazer isso
+		if(Dados.NOME.getNome().equals(atributo)){
+			fachadaBd.addUsuario(new Usuario(email, null, novoValor));
+		}else if (Dados.SENHA.getNome().equals(atributo)){
+			fachadaBd.addUsuario(new Usuario(email, novoValor,null));
+		}
 	}
 
 	@Override
 	public void removeUsuario(String email, String senha)
 			throws HumQueCaroException {
-		// TODO Auto-generated method stub
-
+		if (buscaUsuario(email).getSenha().equals(senha))
+			fachadaBd.removeUsuario(new Usuario(email, senha));
+		else
+			throw new HumQueCaroException("Senha ou Email Invalido");
 	}
 
 	@Override
 	public Usuario buscaUsuario(String email) throws HumQueCaroException {
-		// TODO Auto-generated method stub
-		return null;
+		return fachadaBd.buscaUsuario(email);
 	}
 
 }
