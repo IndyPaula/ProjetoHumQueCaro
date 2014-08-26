@@ -6,6 +6,9 @@ import ifpb.monteiro.ads.pd.fachada.Fachada;
 
 import org.junit.Test;
 
+/*
+ * Classe para testes de Clientes, cadastrados no sistema HumQueCaro.
+ */
 public class TestCliente {
 
 	public Fachada fachada = new Fachada();
