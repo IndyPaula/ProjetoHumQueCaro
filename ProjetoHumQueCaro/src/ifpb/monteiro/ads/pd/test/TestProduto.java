@@ -73,10 +73,11 @@ public class TestProduto {
 		} catch (HumQueCaroException e) {
 		}
 	}
-
+	
+	//TODO Estes testes não eram para a próximo sprint?
 	@Test
 	public void testAlteraProduto() {
-
+		
 		try {
 			fachada.alteraProduto("01", "nomeProduto", "Produto1");
 			assertEquals("Produto1, 01, fab1", fachada.buscaProduto("01"));
@@ -107,6 +108,7 @@ public class TestProduto {
 
 	}
 
+	//TODO Estes testes não eram para a próximo sprint
 	@Test
 	public void testAlteraProdutoAtributoInvalido() {
 
@@ -168,7 +170,7 @@ public class TestProduto {
 
 	@Test
 	public void testBuscaProduto() {
-
+		//TODO A mensagem esperado para esse tipo de erro é "Campo codigo de identificacao invalido"
 		try {
 			fachada.buscaProduto("");
 			fail("Campo inválido");
@@ -180,19 +182,22 @@ public class TestProduto {
 			fail("Campo inválido");
 		} catch (HumQueCaroException e) {
 		}
-
+		
+		//TODO Por que este código é inválido?
 		try {
 			fachada.buscaProduto("0001");
 			fail("Campo inválido");
 		} catch (HumQueCaroException e) {
 		}
-
+		
+		//TODO Estes 2 próximos códigos condizem com as mudaças no alteraProduto. Adcione outros
+		// depois, pois esta sprint não conta com o alteraProduto.
 		try {
 			assertEquals("Produto1, 01, Empresa1", fachada.buscaProduto("01"));
 		} catch (HumQueCaroException e) {
 			fail("Produto não encontrado");
 		}
-
+		
 		try {
 			assertEquals("Produto2, 02, Empresa2", fachada.buscaProduto("02"));
 		} catch (HumQueCaroException e) {
@@ -203,6 +208,8 @@ public class TestProduto {
 
 	@Test
 	public void testRemoveProduto() {
+		//TODO Este código condiz com as mudaças no alteraProduto. Adcione outros
+		// depois, pois esta sprint não conta com o alteraProduto.
 		try {
 			assertEquals("Produto1, 01, Empresa1", fachada.buscaProduto("01"));
 			fachada.removeProduto("01");
@@ -210,12 +217,15 @@ public class TestProduto {
 			fail("Produto não encontrado");
 		}
 
+		//TODO Código que conta com o de cima.
 		try {
 			fachada.removeProduto("01");
 			fail("Campo código de identificação inválido");
 		} catch (HumQueCaroException e) {
 		}
 
+		//TODO Este código condiz com as mudaças no alteraProduto. Adcione outros
+		// depois, pois esta sprint não conta com o alteraProduto.
 		try {
 			assertEquals("Produto2, 02, Empresa2", fachada.buscaProduto("02"));
 			fachada.removeProduto("02");
@@ -223,6 +233,7 @@ public class TestProduto {
 			fail("Produto não encontrado");
 		}
 
+		//TODO Código que conta com o de cima.
 		try {
 			fachada.removeProduto("02");
 			fail("Campo código de identificação inválido");
@@ -231,6 +242,7 @@ public class TestProduto {
 
 		// TESTE DE ATRIBUTOS INVÁLIDOS
 
+		//TODO A mensagem esperada para esse 2 tipos de erro que seguem é "Campo codigo de identificacao invalido"
 		try {
 			fachada.removeProduto("");
 			fail("Campo inválido");
