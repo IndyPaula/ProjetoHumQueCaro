@@ -101,63 +101,16 @@ public class TestUsuario {
 	}
 
 	@Test
-	public void testAlteraUsuario() {
-		try {
-			fachada.alteraUsuario("email@email.com", "nome", "Silvio Santos");
-		} catch (HumQueCaroException e) {
-			fail("Usuário não encontrado");
-		}
-
-		try {
-			fachada.alteraUsuario("email2@email.com", "senha", "222");
-		} catch (HumQueCaroException e) {
-			fail("Usuário não encontrado");
-		}
-
-		// TESTES DE ERRO PARA ATRIBUTOS/NOVOS VALORES INVÁLIDOS
-		try {
-			fachada.alteraUsuario("email2@email.com", "nome", "222");
-			fail("Campo novo valor inválido");
-		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			fachada.alteraUsuario("email2@email.com", "nome", "#éç$jo");
-			fail("Campo novo valor inválido");
-		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			fachada.alteraUsuario("email2@email.com", "senhaa", "222");
-			fail("Campo atributo inválido");
-		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			fachada.alteraUsuario("email2@email.com", "nomee", "Zé da Feira");
-			fail("Campo atributo inválido");
-		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			fachada.alteraUsuario("emaill@email.com", "nome", "nome");
-			fail("Usuário não encontrado");
-		} catch (HumQueCaroException e) {
-		}
-
-	}
-
-	@Test
 	public void testGetUsuario() {
 		try {
-			assertEquals("email@email.com, Silvio Santos, 123",
+			assertEquals("email@email.com, Maria, 123",
 					fachada.buscaUsuario("email@email.com"));
 		} catch (HumQueCaroException e) {
 			fail("Usuário não encontrado");
 		}
 
 		try {
-			assertEquals("email2@email.com, Carlos, 222",
+			assertEquals("email2@email.com, Carlos, 111",
 					fachada.buscaUsuario("email2@email.com"));
 		} catch (HumQueCaroException e) {
 			fail("Usuário não encontrado");
@@ -167,6 +120,27 @@ public class TestUsuario {
 		try {
 			fachada.buscaUsuario("emai2l@email.com");
 			fail("Usuário não encontrado");
+		} catch (HumQueCaroException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			fachada.buscaUsuario("#$&çépontocom");
+			fail("Usuário não encontrado");
+		} catch (HumQueCaroException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			fachada.buscaUsuario("");
+			fail("Campo inválido");
+		} catch (HumQueCaroException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			fachada.buscaUsuario(null);
+			fail("Campo inválido");
 		} catch (HumQueCaroException e) {
 			e.printStackTrace();
 		}
@@ -182,15 +156,27 @@ public class TestUsuario {
 			fail("Campo email inválido");
 		}
 
+		try {
+			fachada.removeUsuario("email2@email.com", "111");
+		} catch (HumQueCaroException e) {
+			fail("Campo email inválido");
+		}
+
 		// REMOVER USUÁRIO JÁ REMOVIDO, NÃO CADASTRADO E/OU SENHA INCORRETA
 		try {
-			fachada.removeUsuario("email@email.com", "222");
+			fachada.removeUsuario("email@email.com", "123");
 			fail("Campo email inválido");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
-			fachada.removeUsuario("emaill@email.com", "222");
+			fachada.removeUsuario("email2@email.com", "222");
+			fail("Campo senha inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.removeUsuario("emil@email.com", "111");
 			fail("Campo email inválido");
 		} catch (HumQueCaroException e) {
 		}
@@ -198,6 +184,30 @@ public class TestUsuario {
 		try {
 			fachada.removeUsuario("email2@email.com", "111");
 			fail("Campo email inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.removeUsuario("", "111");
+			fail("Campo email inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.removeUsuario(null, "111");
+			fail("Campo email inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.removeUsuario("email@email.com", "");
+			fail("Campo senha inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.removeUsuario("email@email.com", null);
+			fail("Campo senha inválido");
 		} catch (HumQueCaroException e) {
 		}
 
