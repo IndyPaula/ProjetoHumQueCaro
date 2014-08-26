@@ -7,7 +7,10 @@ import ifpb.monteiro.ads.pd.fachada.Fachada;
 import org.junit.Test;
 
 /*
- * Classe para testes JUnit. >>> EM ANDAMENTO <<<
+ * Classe para testes do Usuário:
+ * Adicionar, Alterar, Remover e Buscar. 
+ * 
+ * >>> EM ANDAMENTO <<<
  * 
  * @author Deivid Azevedo
  */
@@ -111,8 +114,40 @@ public class TestUsuario {
 			fail("Usuário não encontrado");
 		}
 
+		// TESTES DE ERRO PARA ATRIBUTOS/NOVOS VALORES INVÁLIDOS
+		try {
+			fachada.alteraUsuario("email2@email.com", "nome", "222");
+			fail("Campo novo valor inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.alteraUsuario("email2@email.com", "nome", "#éç$jo");
+			fail("Campo novo valor inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.alteraUsuario("email2@email.com", "senhaa", "222");
+			fail("Campo atributo inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.alteraUsuario("email2@email.com", "nomee", "Zé da Feira");
+			fail("Campo atributo inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.alteraUsuario("emaill@email.com", "nome", "nome");
+			fail("Usuário não encontrado");
+		} catch (HumQueCaroException e) {
+		}
+
 	}
 
+	@Test
 	public void testGetUsuario() {
 		try {
 			assertEquals("email@email.com, Silvio Santos, 123",
@@ -122,17 +157,47 @@ public class TestUsuario {
 		}
 
 		try {
-			assertEquals("email2@email.com, Carlos, 111",
+			assertEquals("email2@email.com, Carlos, 222",
 					fachada.buscaUsuario("email2@email.com"));
 		} catch (HumQueCaroException e) {
 			fail("Usuário não encontrado");
 		}
 
+		// TESTES PARA USUÁRIOS NÃO ENCONTRADOS
 		try {
 			fachada.buscaUsuario("emai2l@email.com");
 			fail("Usuário não encontrado");
 		} catch (HumQueCaroException e) {
 			e.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void testRemoveUsuario() {
+		try {
+			fachada.removeUsuario("email@email.com", "123");
+		} catch (HumQueCaroException e) {
+			fail("Campo email inválido");
+		}
+
+		// REMOVER USUÁRIO JÁ REMOVIDO, NÃO CADASTRADO E/OU SENHA INCORRETA
+		try {
+			fachada.removeUsuario("email@email.com", "222");
+			fail("Campo email inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.removeUsuario("emaill@email.com", "222");
+			fail("Campo email inválido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.removeUsuario("email2@email.com", "111");
+			fail("Campo email inválido");
+		} catch (HumQueCaroException e) {
 		}
 
 	}

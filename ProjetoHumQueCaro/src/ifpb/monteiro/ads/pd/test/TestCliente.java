@@ -152,6 +152,25 @@ public class TestCliente {
 	}
 
 	@Test
+	public void testGetCliente() {
+
+		try {
+			assertEquals("11111111110, Hugo",
+					fachada.buscaCliente("11111111110"));
+		} catch (HumQueCaroException e) {
+			fail("Cliente não encontrado");
+		}
+
+		try {
+			assertEquals("12345678901, José da Feira",
+					fachada.buscaCliente("12345678901"));
+		} catch (HumQueCaroException e) {
+			fail("Cliente não encontrado");
+		}
+
+	}
+
+	@Test
 	public void testRemoveCliente() {
 		try {
 			fachada.removeCliente("11111111110");
@@ -191,4 +210,5 @@ public class TestCliente {
 		}
 
 	}
+
 }
