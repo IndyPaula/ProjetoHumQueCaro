@@ -23,6 +23,13 @@ public class TestProduto {
 		} catch (HumQueCaroException e) {
 			fail("Produto não adicionado");
 		}
+
+		try {
+			assertEquals(true,
+					fachada.adicionaProduto("Produto3", "03", "Fabricante3"));
+		} catch (HumQueCaroException e) {
+			fail("Produto não adicionado");
+		}
 	}
 
 	/**
@@ -67,139 +74,63 @@ public class TestProduto {
 		} catch (HumQueCaroException e) {
 		}
 
+		// PRODUTOS JÁ CADASTRADOS ANTERIORMENTE (MESMO CÓDIGO)
 		try {
 			assertEquals(false,
 					fachada.adicionaProduto("NomeProduto", "01", "fabricante"));
 		} catch (HumQueCaroException e) {
 		}
-	}
-	
-	//TODO Estes testes não eram para a próximo sprint?
-	@Test
-	public void testAlteraProduto() {
-		
-		try {
-			fachada.alteraProduto("01", "nomeProduto", "Produto1");
-			assertEquals("Produto1, 01, fab1", fachada.buscaProduto("01"));
-		} catch (HumQueCaroException e) {
-			fail("Produto não encontrado");
-		}
 
 		try {
-			fachada.alteraProduto("01", "empresa", "Empresa1");
-			assertEquals("Produto1, 01, Empresa1", fachada.buscaProduto("01"));
-		} catch (HumQueCaroException e) {
-			fail("Produto não encontrado");
-		}
-
-		try {
-			fachada.alteraProduto("02", "nomeProduto", "Produto2");
-			assertEquals("Produto2, 02, fab2", fachada.buscaProduto("02"));
-		} catch (HumQueCaroException e) {
-			fail("Produto não encontrado");
-		}
-
-		try {
-			fachada.alteraProduto("02", "empresa", "Empresa2");
-			assertEquals("Produto2, 02, Empresa2", fachada.buscaProduto("02"));
-		} catch (HumQueCaroException e) {
-			fail("Produto não encontrado");
-		}
-
-	}
-
-	//TODO Estes testes não eram para a próximo sprint
-	@Test
-	public void testAlteraProdutoAtributoInvalido() {
-
-		try {
-			fachada.alteraProduto("01", "empresaa", "Empresa2");
-			fail("Campo atributo inválido");
+			assertEquals(false, fachada.adicionaProduto("Pro", "02", "Fab"));
 		} catch (HumQueCaroException e) {
 		}
-
-		try {
-			fachada.alteraProduto("01", "nomeProoduto", "Prod");
-			fail("Campo atributo inválido");
-		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			fachada.alteraProduto("01", "", "Empresa2");
-			fail("Campo atributo inválido");
-		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			fachada.alteraProduto("02", null, "Empresa2");
-			fail("Campo atributo inválido");
-		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			fachada.alteraProduto("", "nomeProduto", "produto");
-			fail("Campo codigo inválido");
-		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			fachada.alteraProduto(null, "nomeProduto", "produto1");
-			fail("Campo codigo inválido");
-		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			fachada.alteraProduto("010", "nomeProduto", "produto");
-			fail("Campo codigo inválido");
-		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			fachada.alteraProduto("1", "empresa", "Empresa2");
-			fail("Campo codigo inválido");
-		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			fachada.alteraProduto("002", "empresa", "Empresa2");
-			fail("Campo codigo inválido");
-		} catch (HumQueCaroException e) {
-		}
-
 	}
 
 	@Test
 	public void testBuscaProduto() {
-		//TODO A mensagem esperado para esse tipo de erro é "Campo codigo de identificacao invalido"
+		// TODO a mensagem dentro do fail não influencia o que vem da Exception
+		// Deste modo não é feita a comparação de mensagens de erro. Ainda
+		// assim, modifiquei para a mensagem que você espera
 		try {
 			fachada.buscaProduto("");
-			fail("Campo inválido");
+			fail("Campo codigo de identificacao invalido");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
 			fachada.buscaProduto(null);
-			fail("Campo inválido");
+			fail("Campo codigo de identificacao invalido");
 		} catch (HumQueCaroException e) {
 		}
-		
-		//TODO Por que este código é inválido?
+
+		// (Luiz) TODO Por que este código é inválido?
+		// (Deivid) Como dito anteriormente, a mensagem de erro dentro do fail
+		// não é comparada com a mensagem de erro vinda da Exception, sendo
+		// assim este próximo teste dá erro porque o codigo do produto que se
+		// deseja buscar não foi previamente cadastrado no sistema
 		try {
 			fachada.buscaProduto("0001");
-			fail("Campo inválido");
+			fail("Produto não encontrado");
 		} catch (HumQueCaroException e) {
 		}
-		
-		//TODO Estes 2 próximos códigos condizem com as mudaças no alteraProduto. Adcione outros
-		// depois, pois esta sprint não conta com o alteraProduto.
+
+		// Teste sem as alterações de produto
 		try {
-			assertEquals("Produto1, 01, Empresa1", fachada.buscaProduto("01"));
+			assertEquals("p1, 01, fab1", fachada.buscaProduto("01"));
 		} catch (HumQueCaroException e) {
 			fail("Produto não encontrado");
 		}
-		
+
 		try {
-			assertEquals("Produto2, 02, Empresa2", fachada.buscaProduto("02"));
+			assertEquals("Produto3, 03, Fabricante3",
+					fachada.buscaProduto("03"));
+		} catch (HumQueCaroException e) {
+			fail("Produto não encontrado");
+		}
+
+		try {
+			assertEquals("p2, 02, fab2", fachada.buscaProduto("02"));
 		} catch (HumQueCaroException e) {
 			fail("Produto não encontrado");
 		}
@@ -208,32 +139,28 @@ public class TestProduto {
 
 	@Test
 	public void testRemoveProduto() {
-		//TODO Este código condiz com as mudaças no alteraProduto. Adcione outros
-		// depois, pois esta sprint não conta com o alteraProduto.
 		try {
-			assertEquals("Produto1, 01, Empresa1", fachada.buscaProduto("01"));
+			assertEquals("p1, 01, fab1", fachada.buscaProduto("01"));
 			fachada.removeProduto("01");
 		} catch (HumQueCaroException e) {
 			fail("Produto não encontrado");
 		}
 
-		//TODO Código que conta com o de cima.
+		// TODO Removendo produto já removido anteriormente
 		try {
 			fachada.removeProduto("01");
 			fail("Campo código de identificação inválido");
 		} catch (HumQueCaroException e) {
 		}
 
-		//TODO Este código condiz com as mudaças no alteraProduto. Adcione outros
-		// depois, pois esta sprint não conta com o alteraProduto.
 		try {
-			assertEquals("Produto2, 02, Empresa2", fachada.buscaProduto("02"));
+			assertEquals("p2, 02, fab2", fachada.buscaProduto("02"));
 			fachada.removeProduto("02");
 		} catch (HumQueCaroException e) {
 			fail("Produto não encontrado");
 		}
 
-		//TODO Código que conta com o de cima.
+		// TODO Removendo produto já removido anteriormente
 		try {
 			fachada.removeProduto("02");
 			fail("Campo código de identificação inválido");
@@ -242,16 +169,15 @@ public class TestProduto {
 
 		// TESTE DE ATRIBUTOS INVÁLIDOS
 
-		//TODO A mensagem esperada para esse 2 tipos de erro que seguem é "Campo codigo de identificacao invalido"
 		try {
 			fachada.removeProduto("");
-			fail("Campo inválido");
+			fail("Campo codigo de identificacao invalido");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
 			fachada.removeProduto(null);
-			fail("Campo inválido");
+			fail("Campo codigo de identificacao invalido");
 		} catch (HumQueCaroException e) {
 		}
 
