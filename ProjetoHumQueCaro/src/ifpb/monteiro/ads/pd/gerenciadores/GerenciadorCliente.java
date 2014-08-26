@@ -17,8 +17,10 @@ public class GerenciadorCliente implements GerenciadorClienteIF {
 			throws HumQueCaroException {
 		if (buscaCliente(telefone) == null && verificaAtributos(nome, telefone)) {
 			cliDAO.addCliente(new Cliente(nome, telefone));
+		} else {
+
+			throw new HumQueCaroException("Cliente já cadastrado");
 		}
-		throw new HumQueCaroException("Cliente já cadastrado");
 	}
 
 	public boolean verificaAtributos(String nome, String telefone)
