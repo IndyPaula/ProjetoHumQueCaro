@@ -172,10 +172,17 @@ public class TestCliente {
 
 	@Test
 	public void testRemoveCliente() {
+
 		try {
 			fachada.removeCliente("11111111111");
-			fail("Cliente não cadastrado");
 		} catch (HumQueCaroException e) {
+			fail("Cliente não cadastrado");
+		}
+
+		try {
+			fachada.removeCliente("12345678901");
+		} catch (HumQueCaroException e) {
+			fail("Cliente não cadastrado");
 		}
 
 		// REMOVENDO CLIENTES JÁ REMOVIDOS E VALORES INVÁLIDOS
@@ -187,8 +194,8 @@ public class TestCliente {
 
 		try {
 			fachada.removeCliente("12345678901");
-		} catch (HumQueCaroException e) {
 			fail("Cliente não cadastrado");
+		} catch (HumQueCaroException e) {
 		}
 
 		try {
