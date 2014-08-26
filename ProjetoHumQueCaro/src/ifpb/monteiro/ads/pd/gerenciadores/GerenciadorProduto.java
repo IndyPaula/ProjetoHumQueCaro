@@ -23,7 +23,6 @@ public class GerenciadorProduto implements GerenciadorProdutoIF {
 		try {
 			pDAO.addProduto(new Produto(nomeProduto, codigo, fabricante));
 		} catch (HumQueCaroException e) {
-			System.err.println(e.getMessage());
 			return false;
 		}
 		return true;
