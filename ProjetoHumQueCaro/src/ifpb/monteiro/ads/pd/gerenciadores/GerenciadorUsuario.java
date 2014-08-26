@@ -4,6 +4,7 @@ import ifpb.monteiro.ads.pd.beans.Usuario;
 import ifpb.monteiro.ads.pd.enumerations.Dados;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachada.FachadaBD;
+import ifpb.monteiro.ads.pd.validacao.Validacao;
 
 public class GerenciadorUsuario implements GerenciadorUsuarioIF {
 	FachadaBD fachadaBd;
@@ -15,6 +16,9 @@ public class GerenciadorUsuario implements GerenciadorUsuarioIF {
 	@Override
 	public void adicionaUsuario(String email, String senha, String nome)
 			throws HumQueCaroException {
+		Validacao.validaEntrada(email, "Atributo email invalido");
+		Validacao.validaEntrada(senha, "Atributo senha invalido");
+		Validacao.validaEntrada(nome, "Atributo nome invalido");
 		fachadaBd.addUsuario(new Usuario(email, senha, nome));
 	}
 
@@ -40,7 +44,13 @@ public class GerenciadorUsuario implements GerenciadorUsuarioIF {
 
 	@Override
 	public Usuario buscaUsuario(String email) throws HumQueCaroException {
-		return fachadaBd.buscaUsuario(email);
+		Usuario user = fachadaBd.buscaUsuario(email);
+		if(user!= null){
+			return user; 
+		}else{
+			throw new HumQueCaroException("Atribulo email invalido");
+		}
+		
 	}
 
 }
