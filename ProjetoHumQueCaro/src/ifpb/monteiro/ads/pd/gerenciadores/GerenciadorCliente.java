@@ -15,10 +15,10 @@ public class GerenciadorCliente implements GerenciadorClienteIF {
 	@Override
 	public void adicionaCliente(String nome, String telefone)
 			throws HumQueCaroException {
-		if (buscaCliente(telefone) == null && verificaAtributos(nome, telefone)) {
+		if (cliDAO.buscaCliente(telefone) == null
+				&& verificaAtributos(nome, telefone)) {
 			cliDAO.addCliente(new Cliente(nome, telefone));
 		} else {
-
 			throw new HumQueCaroException("Cliente já cadastrado");
 		}
 	}
@@ -55,7 +55,12 @@ public class GerenciadorCliente implements GerenciadorClienteIF {
 
 	@Override
 	public Cliente buscaCliente(String telefone) throws HumQueCaroException {
-		return cliDAO.buscaCliente(telefone);
+		Cliente cliente = cliDAO.buscaCliente(telefone);
+		if (cliente != null) {
+			return cliente;
+		} else {
+			throw new HumQueCaroException("Cliente naõ cadastrado");
+		}
 	}
 
 }
