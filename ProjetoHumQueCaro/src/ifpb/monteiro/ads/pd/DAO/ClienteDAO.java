@@ -48,7 +48,7 @@ public class ClienteDAO extends DAO<Cliente> {
 					"UPDATE clientes SET nome = '" + cli.getNome()
 							+ "', telefone = '" + cli.getTelefone()
 							+ "', codigo_cliente ='" + cli.getCodigo()
-							+ "' WHERE telefone like '" + cli.getTelefone()
+							+ "' WHERE codigo_cliente like '" + cli.getCodigo()
 							+ "'");
 			fecharBanco();
 		} catch (SQLException e) {

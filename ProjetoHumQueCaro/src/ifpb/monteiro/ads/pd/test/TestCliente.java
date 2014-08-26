@@ -12,30 +12,30 @@ public class TestCliente {
 
 	@Test
 	public void testAddCliente() {
-		// try {
-		// fachada.adicionaCliente("Mirna", "11111111111");
-		// } catch (HumQueCaroException e) {
-		// fail("Cliente já cadastrado");
-		// }
+		try {
+			fachada.adicionaCliente("Mirna", "11111111111");
+		} catch (HumQueCaroException e) {
+			fail("Cliente já cadastrado");
+		}
 
-		// try {
-		// fachada.adicionaCliente("Zé da Roça", "12345678901");
-		// } catch (HumQueCaroException e) {
-		// fail("Cliente já cadastrado");
-		// }
+		try {
+			fachada.adicionaCliente("Zé da Roça", "12345678901");
+		} catch (HumQueCaroException e) {
+			fail("Cliente já cadastrado");
+		}
 
-		// // TESTE PARA CLIENTES JÁ CADASTRADOS ATRAVÉS DO TELEFONE
-		// try {
-		// fachada.adicionaCliente("Mariquinha", "12345678901");
-		// fail("Cliente já cadastrado");
-		// } catch (HumQueCaroException e) {
-		// }
-		//
-		// try {
-		// fachada.adicionaCliente("Mariquinha", "11111111111");
-		// fail("Cliente já cadastrado");
-		// } catch (HumQueCaroException e) {
-		// }
+		// TESTE PARA CLIENTES JÁ CADASTRADOS ATRAVÉS DO TELEFONE
+		try {
+			fachada.adicionaCliente("Mariquinha", "12345678901");
+			fail("Cliente já cadastrado");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.adicionaCliente("Mariquinha", "11111111111");
+			fail("Cliente já cadastrado");
+		} catch (HumQueCaroException e) {
+		}
 	}
 
 	@Test
@@ -113,43 +113,43 @@ public class TestCliente {
 
 		// TESTES PARA CLIENTES, ATRIBUTOS E NOVOS VALORES INVÁLIDOS
 		try {
-			fachada.alteraCliente("11111111111", "telefone", "00000000000");
+			fachada.alteraCliente("11111111110", "telefone", "00000000000");
+		} catch (HumQueCaroException e) {
 			fail("Cliente não cadastrado");
-		} catch (HumQueCaroException e) {
 		}
 
 		try {
-			fachada.alteraCliente("11111111111", "", "Ana");
+			fachada.alteraCliente("00000000000", "", "Ana");
 			fail("Campo atributo inválido");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
-			fachada.alteraCliente("11111111111", null, "Ana");
+			fachada.alteraCliente("00000000000", null, "Ana");
 			fail("Campo atributo inválido");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
-			fachada.alteraCliente("11111111111", "nome", "");
+			fachada.alteraCliente("00000000000", "nome", "");
 			fail("Campo novo valor inválido");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
-			fachada.alteraCliente("11111111111", "telefone", null);
+			fachada.alteraCliente("00000000000", "telefone", null);
 			fail("Campo novo valor inválido");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
-			fachada.alteraCliente("11111111111", "nomes", "Luana");
+			fachada.alteraCliente("00000000000", "nomes", "Luana");
 			fail("Campo atributo inválido");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
-			fachada.alteraCliente("11111111111", "telefonee", "12121212121");
+			fachada.alteraCliente("00000000000", "telefonee", "12121212121");
 			fail("Campo atributo inválido");
 		} catch (HumQueCaroException e) {
 		}
@@ -160,8 +160,8 @@ public class TestCliente {
 	public void testGetCliente() {
 
 		try {
-			assertEquals("11111111110, Hugo",
-					fachada.buscaCliente("11111111110").toString());
+			assertEquals("00000000000, Hugo",
+					fachada.buscaCliente("00000000000").toString());
 		} catch (HumQueCaroException e) {
 			fail("Cliente não encontrado");
 		}
@@ -177,15 +177,9 @@ public class TestCliente {
 
 	@Test
 	public void testRemoveCliente() {
-
+		//
 		try {
-			fachada.removeCliente("11111111110");
-		} catch (HumQueCaroException e) {
-			fail("Cliente não cadastrado");
-		}
-
-		try {
-			fachada.removeCliente("11111111111");
+			fachada.removeCliente("00000000000");
 		} catch (HumQueCaroException e) {
 			fail("Cliente não cadastrado");
 		}
