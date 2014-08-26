@@ -18,11 +18,8 @@ public class Validacao {
 	 *            que vai ser verificado
 	 * @param msg
 	 * 
-	 * @throws BabyCareException
-	 *             Caso o email seja invalido sera lançada a exeption atributo
-	 *             invalido
 	 */
-	private static void verNomeEmail(String email, String msg)
+	public static void verNomeEmail(String email, String msg)
 			throws HumQueCaroException {
 		if (email != null && contRept(email, '@') == 1) {
 			String[] mail = email.split("@");
