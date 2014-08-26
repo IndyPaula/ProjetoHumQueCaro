@@ -154,18 +154,24 @@ public class TestCliente {
 	@Test
 	public void testRemoveCliente() {
 		try {
-			fachada.removeCliente("11111111110");
-		} catch (HumQueCaroException e) {
+			fachada.removeCliente("11111111111");
 			fail("Cliente não cadastrado");
+		} catch (HumQueCaroException e) {
 		}
 
 		// REMOVENDO CLIENTES JÁ REMOVIDOS E VALORES INVÁLIDOS
 		try {
-			fachada.removeCliente("11111111110");
+			fachada.removeCliente("11111111111");
 			fail("Cliente não cadastrado");
 		} catch (HumQueCaroException e) {
 		}
 
+//		try {
+//			fachada.removeCliente("12345678901");
+//		} catch (HumQueCaroException e) {
+//			fail("Cliente não cadastrado");
+//		}
+		
 		try {
 			fachada.removeCliente("");
 			fail("Campo inválido");
