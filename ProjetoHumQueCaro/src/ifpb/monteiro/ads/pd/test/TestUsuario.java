@@ -175,6 +175,7 @@ public class TestUsuario {
 
 	@Test
 	public void testRemoveUsuario() {
+
 		try {
 			fachada.removeUsuario("email@email.com", "123");
 		} catch (HumQueCaroException e) {
