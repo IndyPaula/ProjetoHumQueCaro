@@ -1,5 +1,6 @@
 package ifpb.monteiro.ads.pd.fachada;
 
+import ifpb.monteiro.ads.pd.DAO.ClienteDAO;
 import ifpb.monteiro.ads.pd.DAO.DAO;
 import ifpb.monteiro.ads.pd.DAO.ProdutoDAO;
 import ifpb.monteiro.ads.pd.DAO.UsuarioDAO;
@@ -10,15 +11,18 @@ import ifpb.monteiro.ads.pd.enumerations.Dados;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachadaIF.FachadaBancoIF;
 
-public class FachadaBD implements FachadaBancoIF{
-	
+public class FachadaBD implements FachadaBancoIF {
+
+	private DAO<Cliente> cliDAO;
 	private DAO<Produto> pDAO;
 	private DAO<Usuario> pUsuario;
+
 	public FachadaBD() {
+		cliDAO = new ClienteDAO();
 		pDAO = new ProdutoDAO();
 		pUsuario = new UsuarioDAO();
 	}
-	
+
 	@Override
 	public void addUsuario(Usuario usuario) throws HumQueCaroException {
 		pUsuario.adiciona(usuario);
@@ -28,15 +32,14 @@ public class FachadaBD implements FachadaBancoIF{
 	public void removeUsuario(Usuario usuario) throws HumQueCaroException {
 		pUsuario.remove(usuario);
 	}
-	
+
 	@Override
 	public Usuario buscaUsuario(String email) throws HumQueCaroException {
 		return pUsuario.procura(email);
 	}
 
 	@Override
-	public void alteraUsuario(Usuario usuario)
-			throws HumQueCaroException {
+	public void alteraUsuario(Usuario usuario) throws HumQueCaroException {
 
 	}
 
@@ -52,7 +55,6 @@ public class FachadaBD implements FachadaBancoIF{
 
 	@Override
 	public Produto buscaProduto(String codigo) throws HumQueCaroException {
-		//TODO Exception com mensagem "Campo cï¿½digo invï¿½lido" caso seja nulo, vazio ou nï¿½o exista.
 		return pDAO.procura(codigo);
 	}
 
@@ -65,26 +67,32 @@ public class FachadaBD implements FachadaBancoIF{
 		} else if (atributo.equals(Dados.FABRICANTE)) {
 			produto.setFabricante(novoValor);
 		} else {
-			throw new HumQueCaroException("Campo atributo invï¿½lido");
+			throw new HumQueCaroException("Campo atributo invalido");
 		}
 		pDAO.altera(produto);
 	}
 
 	@Override
 	public void addCliente(Cliente cliente) throws HumQueCaroException {
-		// TODO Auto-generated method stub
-		
+		cliDAO.adiciona(cliente);
+
 	}
 
 	@Override
 	public void removeCliente(Cliente cliente) throws HumQueCaroException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public Cliente buscaCliente(String telefone) throws HumQueCaroException {
-		// TODO Auto-generated method stub
+		Cliente c = cliDAO.procura(telefone);
+		if (telefone == null || telefone.equals("")) {
+			throw new HumQueCaroException("Campo telefone inválido");
+		}
+		if (c != null) {
+			return c;
+		}
 		return null;
 	}
 
@@ -92,7 +100,7 @@ public class FachadaBD implements FachadaBancoIF{
 	public void alteraCliente(String telefone, String atributo, String novoValor)
 			throws HumQueCaroException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

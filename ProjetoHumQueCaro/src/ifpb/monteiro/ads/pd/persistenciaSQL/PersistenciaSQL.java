@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class PersistenciaSQL {
 
 	public static Connection conectar() throws SQLException {
-		String url = "jdbc:mysql://127.0.0.1/projeto_HumQueCaro";
+		String url = "jdbc:mysql://localhost/projeto_HumQueCaro";
 		String username = "root";
 		String password = "senhafraca";
 		Connection connection;

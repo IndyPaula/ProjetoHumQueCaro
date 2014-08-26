@@ -30,7 +30,7 @@ create table produtos(
 -- CRIA TABELA CLIENTE
 create table clientes(
 	codigo_cliente int not null auto_increment,
-	telefone char(25) not null,
+	telefone char(11) not null,
 	nome varchar(80) not null,
 	PRIMARY KEY (codigo_cliente),
 	UNIQUE (telefone)
