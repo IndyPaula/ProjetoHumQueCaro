@@ -15,10 +15,10 @@ public class GerenciadorCliente implements GerenciadorClienteIF {
 	@Override
 	public void adicionaCliente(String nome, String telefone)
 			throws HumQueCaroException {
-		if (buscaCliente(telefone) == null
-				&& verificaAtributos(nome, telefone)) {
+		if (buscaCliente(telefone) == null && verificaAtributos(nome, telefone)) {
 			cliDAO.addCliente(new Cliente(nome, telefone));
 		}
+		throw new HumQueCaroException("Cliente já cadastrado");
 	}
 
 	public boolean verificaAtributos(String nome, String telefone)
@@ -42,8 +42,12 @@ public class GerenciadorCliente implements GerenciadorClienteIF {
 
 	@Override
 	public void removeCliente(String telefone) throws HumQueCaroException {
-		// TODO Auto-generated method stub
-
+		if (telefone == null || telefone.equals("")) {
+			throw new HumQueCaroException("Campo telefone inválido");
+		}
+		if (buscaCliente(telefone) != null) {
+			cliDAO.removeCliente(new Cliente(null, telefone));
+		}
 	}
 
 	@Override

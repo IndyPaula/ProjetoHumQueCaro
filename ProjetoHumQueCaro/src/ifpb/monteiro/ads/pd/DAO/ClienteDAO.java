@@ -27,9 +27,17 @@ public class ClienteDAO extends DAO<Cliente> {
 	}
 
 	@Override
-	public void remove(Cliente algo) throws HumQueCaroException {
-		// TODO Auto-generated method stub
-
+	public void remove(Cliente cli) throws HumQueCaroException {
+		try {
+			abrirBanco();
+			getStmt().executeUpdate(
+					"DELETE FROM clientes WHERE telefone like '" + cli.getTelefone()
+					+ "'");
+			fecharBanco();
+		} catch (SQLException e) {
+			throw new HumQueCaroException("Cliente não removido"
+					+ e.getMessage());
+		}
 	}
 
 	@Override

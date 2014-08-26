@@ -82,8 +82,7 @@ public class FachadaBD implements FachadaBancoIF {
 
 	@Override
 	public void removeCliente(Cliente cliente) throws HumQueCaroException {
-		// TODO Auto-generated method stub
-
+		cliDAO.remove(cliente);
 	}
 
 	@Override

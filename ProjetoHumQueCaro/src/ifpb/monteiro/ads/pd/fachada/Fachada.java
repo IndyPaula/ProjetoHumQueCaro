@@ -13,7 +13,7 @@ import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorUsuario;
 import ifpb.monteiro.ads.pd.gerenciadores.GerenciadorUsuarioIF;
 
 public class Fachada implements FachadaIF {
-	
+
 	GerenciadorProdutoIF gProduto = new GerenciadorProduto();
 	GerenciadorUsuarioIF gUsuario = new GerenciadorUsuario();
 	GerenciadorClienteIF gCliente = new GerenciadorCliente();
@@ -73,13 +73,13 @@ public class Fachada implements FachadaIF {
 	public void alteraCliente(String telefone, String atributo, String novoValor)
 			throws HumQueCaroException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void removeCliente(String telefone) throws HumQueCaroException {
-		// TODO Auto-generated method stub
-		
+		gCliente.removeCliente(telefone);
+
 	}
 
 	@Override
