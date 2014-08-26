@@ -89,9 +89,6 @@ public class TestProduto {
 
 	@Test
 	public void testBuscaProduto() {
-		// TODO a mensagem dentro do fail não influencia o que vem da Exception
-		// Deste modo não é feita a comparação de mensagens de erro. Ainda
-		// assim, modifiquei para a mensagem que você espera
 		try {
 			fachada.buscaProduto("");
 			fail("Campo codigo de identificacao invalido");
@@ -104,18 +101,12 @@ public class TestProduto {
 		} catch (HumQueCaroException e) {
 		}
 
-		// (Luiz) TODO Por que este código é inválido?
-		// (Deivid) Como dito anteriormente, a mensagem de erro dentro do fail
-		// não é comparada com a mensagem de erro vinda da Exception, sendo
-		// assim este próximo teste dá erro porque o codigo do produto que se
-		// deseja buscar não foi previamente cadastrado no sistema
 		try {
 			fachada.buscaProduto("0001");
 			fail("Produto não encontrado");
 		} catch (HumQueCaroException e) {
 		}
 
-		// Teste sem as alterações de produto
 		try {
 			assertEquals("p1, 01, fab1", fachada.buscaProduto("01"));
 		} catch (HumQueCaroException e) {
@@ -146,7 +137,6 @@ public class TestProduto {
 			fail("Produto não encontrado");
 		}
 
-		// TODO Removendo produto já removido anteriormente
 		try {
 			fachada.removeProduto("01");
 			fail("Campo código de identificação inválido");
@@ -160,7 +150,6 @@ public class TestProduto {
 			fail("Produto não encontrado");
 		}
 
-		// TODO Removendo produto já removido anteriormente
 		try {
 			fachada.removeProduto("02");
 			fail("Campo código de identificação inválido");
@@ -182,5 +171,4 @@ public class TestProduto {
 		}
 
 	}
-
 }
