@@ -185,12 +185,12 @@ public class TestCliente {
 		} catch (HumQueCaroException e) {
 		}
 
-//		try {
-//			fachada.removeCliente("12345678901");
-//		} catch (HumQueCaroException e) {
-//			fail("Cliente não cadastrado");
-//		}
-		
+		try {
+			fachada.removeCliente("12345678901");
+		} catch (HumQueCaroException e) {
+			fail("Cliente não cadastrado");
+		}
+
 		try {
 			fachada.removeCliente("");
 			fail("Campo inválido");
