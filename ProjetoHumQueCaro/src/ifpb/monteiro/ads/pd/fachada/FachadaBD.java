@@ -55,8 +55,6 @@ public class FachadaBD implements FachadaBancoIF {
 
 	@Override
 	public Produto buscaProduto(String codigo) throws HumQueCaroException {
-		// TODO Exception com mensagem "Campo c�digo inv�lido" caso seja
-		// nulo, vazio ou n�o exista.
 		return pDAO.procura(codigo);
 	}
 
@@ -69,7 +67,7 @@ public class FachadaBD implements FachadaBancoIF {
 		} else if (atributo.equals(Dados.FABRICANTE)) {
 			produto.setFabricante(novoValor);
 		} else {
-			throw new HumQueCaroException("Campo atributo inv�lido");
+			throw new HumQueCaroException("Campo atributo invalido");
 		}
 		pDAO.altera(produto);
 	}

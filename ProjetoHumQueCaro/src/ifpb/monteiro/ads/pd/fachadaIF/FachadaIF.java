@@ -151,6 +151,8 @@ public interface FachadaIF {
 	 *            Codigo de identificacao do produto.
 	 * @return Produto
 	 * @throws HumQueCaroException
+	 * 				Caso o codigo seja inexistente, deve ser apresentada a mensagem
+	 *             "Campo codigo de identificacao invalido".
 	 */
 	public Produto buscaProduto(String codigo) throws HumQueCaroException;
 
