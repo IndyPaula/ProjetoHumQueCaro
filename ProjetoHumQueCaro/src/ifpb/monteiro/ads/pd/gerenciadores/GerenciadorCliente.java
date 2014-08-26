@@ -38,8 +38,7 @@ public class GerenciadorCliente implements GerenciadorClienteIF {
 	@Override
 	public void alteraCliente(String telefone, String atributo, String novoValor)
 			throws HumQueCaroException {
-		// TODO Auto-generated method stub
-
+		cliDAO.alteraCliente(telefone, atributo, novoValor);
 	}
 
 	@Override
@@ -49,6 +48,8 @@ public class GerenciadorCliente implements GerenciadorClienteIF {
 		}
 		if (buscaCliente(telefone) != null) {
 			cliDAO.removeCliente(new Cliente(null, telefone));
+		} else {
+			throw new HumQueCaroException("Cliente não cadastrado");
 		}
 	}
 

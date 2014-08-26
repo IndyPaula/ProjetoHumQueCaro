@@ -98,7 +98,16 @@ public class FachadaBD implements FachadaBancoIF {
 	@Override
 	public void alteraCliente(String telefone, String atributo, String novoValor)
 			throws HumQueCaroException {
-		// TODO Auto-generated method stub
+		Cliente c = cliDAO.procura(telefone);
+		if (atributo.equals("nome") && (novoValor != null || novoValor != (""))) {
+			c.setNome(novoValor);
+		}
+		if (atributo.equals("telefone")
+				&& (novoValor != null || novoValor != (""))
+				&& novoValor.length() == 11) {
+			c.setTelefone(novoValor);
+		}
+		cliDAO.altera(c);
 
 	}
 

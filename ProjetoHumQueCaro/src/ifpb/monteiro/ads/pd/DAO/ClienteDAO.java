@@ -10,7 +10,7 @@ public class ClienteDAO extends DAO<Cliente> {
 
 	public ClienteDAO() {
 	}
-	
+
 	@Override
 	public void adiciona(Cliente cli) throws HumQueCaroException {
 		try {
@@ -31,8 +31,8 @@ public class ClienteDAO extends DAO<Cliente> {
 		try {
 			abrirBanco();
 			getStmt().executeUpdate(
-					"DELETE FROM clientes WHERE telefone like '" + cli.getTelefone()
-					+ "'");
+					"DELETE FROM clientes WHERE telefone like '"
+							+ cli.getTelefone() + "'");
 			fecharBanco();
 		} catch (SQLException e) {
 			throw new HumQueCaroException("Cliente não removido"
@@ -41,8 +41,20 @@ public class ClienteDAO extends DAO<Cliente> {
 	}
 
 	@Override
-	public void altera(Cliente algo) throws HumQueCaroException {
-		// TODO Auto-generated method stub
+	public void altera(Cliente cli) throws HumQueCaroException {
+		try {
+			abrirBanco();
+			getStmt().executeUpdate(
+					"UPDATE clientes SET nome = '" + cli.getNome()
+							+ "', telefone = '" + cli.getTelefone()
+							+ "', codigo_cliente ='" + cli.getCodigo()
+							+ "' WHERE telefone like '" + cli.getTelefone()
+							+ "'");
+			fecharBanco();
+		} catch (SQLException e) {
+			throw new HumQueCaroException("Cliente não alterado"
+					+ e.getMessage());
+		}
 
 	}
 

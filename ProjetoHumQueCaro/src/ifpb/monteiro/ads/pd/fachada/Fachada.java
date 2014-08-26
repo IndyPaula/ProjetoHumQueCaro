@@ -72,7 +72,7 @@ public class Fachada implements FachadaIF {
 	@Override
 	public void alteraCliente(String telefone, String atributo, String novoValor)
 			throws HumQueCaroException {
-		// TODO Auto-generated method stub
+		gCliente.alteraCliente(telefone, atributo, novoValor);
 
 	}
 
