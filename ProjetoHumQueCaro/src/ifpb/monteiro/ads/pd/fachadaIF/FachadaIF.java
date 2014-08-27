@@ -107,7 +107,7 @@ public interface FachadaIF {
 	 *         <i>false</i> caso o sistema ja possua um produto com o mesmo
 	 *         codigo identificador.
 	 */
-	public boolean adicionaProduto(String nomeProduto, String codigo,
+	public void adicionaProduto(String nomeProduto, String codigo,
 			String fabricante) throws HumQueCaroException;
 
 	/**
