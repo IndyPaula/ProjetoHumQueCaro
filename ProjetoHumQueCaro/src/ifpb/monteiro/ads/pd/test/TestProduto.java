@@ -87,46 +87,46 @@ public class TestProduto {
 		}
 	}
 
-	@Test
-	public void testBuscaProduto() {
-		try {
-			fachada.buscaProduto("");
-			fail("Campo codigo de identificacao invalido");
-		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			fachada.buscaProduto(null);
-			fail("Campo codigo de identificacao invalido");
-		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			fachada.buscaProduto("0001");
-			fail("Produto não encontrado");
-		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			assertEquals("p1, 01, fab1", fachada.buscaProduto("01"));
-		} catch (HumQueCaroException e) {
-			fail("Produto não encontrado");
-		}
-
-		try {
-			assertEquals("Produto3, 03, Fabricante3",
-					fachada.buscaProduto("03"));
-		} catch (HumQueCaroException e) {
-			fail("Produto não encontrado");
-		}
-
-		try {
-			assertEquals("p2, 02, fab2", fachada.buscaProduto("02"));
-		} catch (HumQueCaroException e) {
-			fail("Produto não encontrado");
-		}
-
-	}
+//	@Test
+//	public void testBuscaProduto() {
+//		try {
+//			fachada.buscaProduto("");
+//			fail("Campo codigo de identificacao invalido");
+//		} catch (HumQueCaroException e) {
+//		}
+//
+//		try {
+//			fachada.buscaProduto(null);
+//			fail("Campo codigo de identificacao invalido");
+//		} catch (HumQueCaroException e) {
+//		}
+//
+//		try {
+//			fachada.buscaProduto("0001");
+//			fail("Produto não encontrado");
+//		} catch (HumQueCaroException e) {
+//		}
+//
+//		try {
+//			assertEquals("p1, 01, fab1", fachada.buscaProduto("01"));
+//		} catch (HumQueCaroException e) {
+//			fail("Produto não encontrado");
+//		}
+//
+//		try {
+//			assertEquals("Produto3, 03, Fabricante3",
+//					fachada.buscaProduto("03"));
+//		} catch (HumQueCaroException e) {
+//			fail("Produto não encontrado");
+//		}
+//
+//		try {
+//			assertEquals("p2, 02, fab2", fachada.buscaProduto("02"));
+//		} catch (HumQueCaroException e) {
+//			fail("Produto não encontrado");
+//		}
+//
+//	}
 
 	@Test
 	public void testRemoveProduto() {
