@@ -5,7 +5,7 @@ import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 
 public interface GerenciadorProdutoIF {
 	
-	public boolean adicionaProduto(String nomeProduto, String codigo,
+	public void adicionaProduto(String nomeProduto, String codigo,
 			String fabricante) throws HumQueCaroException;
 	
 	public void alteraProduto(String codigo, String atributo, String novoValor)

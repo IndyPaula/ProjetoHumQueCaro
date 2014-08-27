@@ -13,27 +13,27 @@ public class TestProduto {
 	@Test
 	public void testAddProduto() {
 		try {
-			assertEquals(true, fachada.adicionaProduto("p1", "01", "fab1"));
+			fachada.adicionaProduto("p1", "01", "fab1");
 		} catch (HumQueCaroException e) {
-			fail("Produto não adicionado");
+			fail("Produto nï¿½o adicionado");
 		}
 
 		try {
-			assertEquals(true, fachada.adicionaProduto("p2", "02", "fab2"));
+			fachada.adicionaProduto("p2", "02", "fab2");
 		} catch (HumQueCaroException e) {
-			fail("Produto não adicionado");
+			fail("Produto nï¿½o adicionado");
 		}
 
 		try {
-			assertEquals(true,
-					fachada.adicionaProduto("Produto3", "03", "Fabricante3"));
+
+			fachada.adicionaProduto("Produto3", "03", "Fabricante3");
 		} catch (HumQueCaroException e) {
-			fail("Produto não adicionado");
+			fail("Produto nï¿½o adicionado");
 		}
 	}
 
 	/**
-	 * TESTES PARA ATRIBUTOS INVÁLIDOS E PRODUTOS COM MESMO CÓDIGO JÁ
+	 * TESTES PARA ATRIBUTOS INVï¿½LIDOS E PRODUTOS COM MESMO Cï¿½DIGO Jï¿½
 	 * CADASTRADOS.
 	 */
 	@Test
@@ -74,59 +74,59 @@ public class TestProduto {
 		} catch (HumQueCaroException e) {
 		}
 
-		// PRODUTOS JÁ CADASTRADOS ANTERIORMENTE (MESMO CÓDIGO)
+		// PRODUTOS Jï¿½ CADASTRADOS ANTERIORMENTE (MESMO Cï¿½DIGO)
 		try {
-			assertEquals(false,
-					fachada.adicionaProduto("NomeProduto", "01", "fabricante"));
+
+			fachada.adicionaProduto("NomeProduto", "01", "fabricante");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
-			assertEquals(false, fachada.adicionaProduto("Pro", "02", "Fab"));
+			fachada.adicionaProduto("Pro", "02", "Fab");
 		} catch (HumQueCaroException e) {
 		}
 	}
 
-//	@Test
-//	public void testBuscaProduto() {
-//		try {
-//			fachada.buscaProduto("");
-//			fail("Campo codigo de identificacao invalido");
-//		} catch (HumQueCaroException e) {
-//		}
-//
-//		try {
-//			fachada.buscaProduto(null);
-//			fail("Campo codigo de identificacao invalido");
-//		} catch (HumQueCaroException e) {
-//		}
-//
-//		try {
-//			fachada.buscaProduto("0001");
-//			fail("Produto não encontrado");
-//		} catch (HumQueCaroException e) {
-//		}
-//
-//		try {
-//			assertEquals("p1, 01, fab1", fachada.buscaProduto("01"));
-//		} catch (HumQueCaroException e) {
-//			fail("Produto não encontrado");
-//		}
-//
-//		try {
-//			assertEquals("Produto3, 03, Fabricante3",
-//					fachada.buscaProduto("03"));
-//		} catch (HumQueCaroException e) {
-//			fail("Produto não encontrado");
-//		}
-//
-//		try {
-//			assertEquals("p2, 02, fab2", fachada.buscaProduto("02"));
-//		} catch (HumQueCaroException e) {
-//			fail("Produto não encontrado");
-//		}
-//
-//	}
+	@Test
+	public void testBuscaProduto() {
+		try {
+			fachada.buscaProduto("");
+			fail("Campo codigo de identificacao invalido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.buscaProduto(null);
+			fail("Campo codigo de identificacao invalido");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			fachada.buscaProduto("0001");
+			fail("Produto nï¿½o encontrado");
+		} catch (HumQueCaroException e) {
+		}
+
+		try {
+			assertEquals("p1, 01, fab1", fachada.buscaProduto("01"));
+		} catch (HumQueCaroException e) {
+			fail("Produto nï¿½o encontrado");
+		}
+
+		try {
+			assertEquals("Produto3, 03, Fabricante3",
+					fachada.buscaProduto("03"));
+		} catch (HumQueCaroException e) {
+			fail("Produto nï¿½o encontrado");
+		}
+
+		try {
+			assertEquals("p2, 02, fab2", fachada.buscaProduto("02"));
+		} catch (HumQueCaroException e) {
+			fail("Produto nï¿½o encontrado");
+		}
+
+	}
 
 	@Test
 	public void testRemoveProduto() {
@@ -134,12 +134,12 @@ public class TestProduto {
 			assertEquals("p1, 01, fab1", fachada.buscaProduto("01"));
 			fachada.removeProduto("01");
 		} catch (HumQueCaroException e) {
-			fail("Produto não encontrado");
+			fail("Produto nï¿½o encontrado");
 		}
 
 		try {
 			fachada.removeProduto("01");
-			fail("Campo código de identificação inválido");
+			fail("Campo cï¿½digo de identificaï¿½ï¿½o invï¿½lido");
 		} catch (HumQueCaroException e) {
 		}
 
@@ -147,16 +147,16 @@ public class TestProduto {
 			assertEquals("p2, 02, fab2", fachada.buscaProduto("02"));
 			fachada.removeProduto("02");
 		} catch (HumQueCaroException e) {
-			fail("Produto não encontrado");
+			fail("Produto nï¿½o encontrado");
 		}
 
 		try {
 			fachada.removeProduto("02");
-			fail("Campo código de identificação inválido");
+			fail("Campo cï¿½digo de identificaï¿½ï¿½o invï¿½lido");
 		} catch (HumQueCaroException e) {
 		}
 
-		// TESTE DE ATRIBUTOS INVÁLIDOS
+		// TESTE DE ATRIBUTOS INVï¿½LIDOS
 
 		try {
 			fachada.removeProduto("");
