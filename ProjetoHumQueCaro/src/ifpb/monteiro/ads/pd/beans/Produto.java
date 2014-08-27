@@ -2,6 +2,7 @@ package ifpb.monteiro.ads.pd.beans;
 
 public class Produto {
 	
+	private int codigoProduto;
 	private String nome;
 	private String codigo;
 	private String fabricante;
@@ -30,13 +31,10 @@ public class Produto {
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == null || obj.getClass() != this.getClass()) {
-			return false;
-		}
-		Produto produto = (Produto) obj;
-		return produto.getCodigo().equals(getCodigo());
+	public int getCodigoProduto() {
+		return codigoProduto;
+	}
+	public void setCodigoProduto(int codigoProduto) {
+		this.codigoProduto = codigoProduto;
 	}
 }
