@@ -7,9 +7,9 @@ import ifpb.monteiro.ads.pd.fachadaIF.FachadaBancoIF;
 import ifpb.monteiro.ads.pd.validacao.Validacao;
 
 public class GerenciadorProduto implements GerenciadorProdutoIF {
-	
+
 	private FachadaBancoIF pDAO;
-	
+
 	public GerenciadorProduto() {
 		pDAO = new FachadaBD();
 	}
