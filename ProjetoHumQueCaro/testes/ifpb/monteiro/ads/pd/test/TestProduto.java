@@ -12,23 +12,24 @@ public class TestProduto {
 
 	@Test
 	public void testAddProduto() {
+		fachada = new Fachada();
 		try {
 			fachada.adicionaProduto("p1", "01", "fab1");
 		} catch (HumQueCaroException e) {
-			fail("Produto n�o adicionado");
+			fail("Produto não adicionado");
 		}
 
 		try {
 			fachada.adicionaProduto("p2", "02", "fab2");
 		} catch (HumQueCaroException e) {
-			fail("Produto n�o adicionado");
+			fail("Produto não adicionado");
 		}
 
 		try {
 
 			fachada.adicionaProduto("Produto3", "03", "Fabricante3");
 		} catch (HumQueCaroException e) {
-			fail("Produto n�o adicionado");
+			fail("Produto não adicionado");
 		}
 	}
 
@@ -78,11 +79,13 @@ public class TestProduto {
 		try {
 
 			fachada.adicionaProduto("NomeProduto", "01", "fabricante");
+			fail("Produto não cadastrado");
 		} catch (HumQueCaroException e) {
 		}
 
 		try {
 			fachada.adicionaProduto("Pro", "02", "Fab");
+			fail("Produto não cadastrado");
 		} catch (HumQueCaroException e) {
 		}
 	}
@@ -103,27 +106,8 @@ public class TestProduto {
 
 		try {
 			fachada.buscaProduto("0001");
-			fail("Produto n�o encontrado");
+			fail("Produto não encontrado");
 		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			assertEquals("p1, 01, fab1", fachada.buscaProduto("01"));
-		} catch (HumQueCaroException e) {
-			fail("Produto n�o encontrado");
-		}
-
-		try {
-			assertEquals("Produto3, 03, Fabricante3",
-					fachada.buscaProduto("03"));
-		} catch (HumQueCaroException e) {
-			fail("Produto n�o encontrado");
-		}
-
-		try {
-			assertEquals("p2, 02, fab2", fachada.buscaProduto("02"));
-		} catch (HumQueCaroException e) {
-			fail("Produto n�o encontrado");
 		}
 
 	}
@@ -131,29 +115,27 @@ public class TestProduto {
 	@Test
 	public void testRemoveProduto() {
 		try {
-			assertEquals("p1, 01, fab1", fachada.buscaProduto("01"));
 			fachada.removeProduto("01");
 		} catch (HumQueCaroException e) {
-			fail("Produto n�o encontrado");
+			fail("Produto não encontrado");
 		}
 
 		try {
 			fachada.removeProduto("01");
-			fail("Campo c�digo de identifica��o inv�lido");
+			fail("Campo código de identificação invalido");
 		} catch (HumQueCaroException e) {
-		}
-
-		try {
-			assertEquals("p2, 02, fab2", fachada.buscaProduto("02"));
-			fachada.removeProduto("02");
-		} catch (HumQueCaroException e) {
-			fail("Produto n�o encontrado");
 		}
 
 		try {
 			fachada.removeProduto("02");
-			fail("Campo c�digo de identifica��o inv�lido");
 		} catch (HumQueCaroException e) {
+			fail("Produto não encontrado");
+		}
+
+		try {
+			fachada.removeProduto("03");
+		} catch (HumQueCaroException e) {
+			fail("Campo código de identificação inválido");
 		}
 
 		// TESTE DE ATRIBUTOS INV�LIDOS

@@ -102,19 +102,6 @@ public class TestUsuario {
 
 	@Test
 	public void testGetUsuario() {
-		try {
-			assertEquals("email@email.com, Maria, 123",
-					fachada.buscaUsuario("email@email.com"));
-		} catch (HumQueCaroException e) {
-			fail("Usuário não encontrado");
-		}
-
-		try {
-			assertEquals("email2@email.com, Carlos, 111",
-					fachada.buscaUsuario("email2@email.com"));
-		} catch (HumQueCaroException e) {
-			fail("Usuário não encontrado");
-		}
 
 		// TESTES PARA USUÁRIOS NÃO ENCONTRADOS
 		try {
