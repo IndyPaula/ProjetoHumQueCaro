@@ -9,11 +9,17 @@ public class Main {
 	public static void main(String[] args) {
 		FachadaIF fachada = new Fachada();
 		try {
-			fachada.adicionaUsuario("asdas", "123123", "sfgsfg");
+			fachada.alteraProduto("123123", "fabricante", "fabricante");
 		} catch (HumQueCaroException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		// try {
+		// fachada.adicionaProduto("asdas", "123123", "sfgsfg");
+		// fachada.removeProduto("123123");
+		// } catch (HumQueCaroException e) {
+		// e.printStackTrace();
+		// }
 	}
 
 }
