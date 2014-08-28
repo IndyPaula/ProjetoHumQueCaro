@@ -7,9 +7,9 @@ import ifpb.monteiro.ads.pd.DAO.UsuarioDAO;
 import ifpb.monteiro.ads.pd.beans.Cliente;
 import ifpb.monteiro.ads.pd.beans.Produto;
 import ifpb.monteiro.ads.pd.beans.Usuario;
-import ifpb.monteiro.ads.pd.enumerations.Dados;
 import ifpb.monteiro.ads.pd.exceptions.HumQueCaroException;
 import ifpb.monteiro.ads.pd.fachadaIF.FachadaBancoIF;
+import ifpb.monteiro.ads.pd.validacao.Validacao;
 
 public class FachadaBD implements FachadaBancoIF {
 
@@ -61,10 +61,13 @@ public class FachadaBD implements FachadaBancoIF {
 	@Override
 	public void alteraProduto(String codigo, String atributo, String novoValor)
 			throws HumQueCaroException {
+		Validacao.validaEntrada(codigo, "Campo código inválido");
+		Validacao.validaEntrada(atributo, "Campo atributo inválido");
+		Validacao.validaEntrada(novoValor, "Campo novoValor inválido");
 		Produto produto = pDAO.procura(codigo);
-		if (atributo.equals(Dados.NOME)) {
+		if (atributo.equals("nomeProduto")) {
 			produto.setNome(novoValor);
-		} else if (atributo.equals(Dados.FABRICANTE)) {
+		} else if (atributo.equals("fabricante")) {
 			produto.setFabricante(novoValor);
 		} else {
 			throw new HumQueCaroException("Campo atributo invalido");
@@ -87,7 +90,7 @@ public class FachadaBD implements FachadaBancoIF {
 	public Cliente buscaCliente(String telefone) throws HumQueCaroException {
 		Cliente c = cliDAO.procura(telefone);
 		if (telefone == null || telefone.equals("")) {
-			throw new HumQueCaroException("Campo telefone inv�lido");
+			throw new HumQueCaroException("Campo telefone inv�lido");
 		}
 		if (c != null) {
 			return c;
@@ -101,10 +104,10 @@ public class FachadaBD implements FachadaBancoIF {
 		Cliente c = cliDAO.procura(telefone);
 		if (atributo == null || atributo.equals("") || novoValor == null
 				|| novoValor.equals("")) {
-			throw new HumQueCaroException("Campo inv�lido");
+			throw new HumQueCaroException("Campo inv�lido");
 		}
 		if (!atributo.equals("nome") && !atributo.equals("telefone")) {
-			throw new HumQueCaroException("Campo atributo inv�lido");
+			throw new HumQueCaroException("Campo atributo inv�lido");
 		}
 		if (atributo.equals("nome") && (novoValor != null || novoValor != (""))) {
 			c.setNome(novoValor);
