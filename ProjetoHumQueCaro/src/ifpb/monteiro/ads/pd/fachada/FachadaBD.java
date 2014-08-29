@@ -40,7 +40,6 @@ public class FachadaBD implements FachadaBancoIF {
 
 	@Override
 	public void alteraUsuario(Usuario usuario) throws HumQueCaroException {
-		//Muito bem.
 		pUsuario.altera(usuario);
 	}
 
