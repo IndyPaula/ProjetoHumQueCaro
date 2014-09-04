@@ -22,6 +22,7 @@ create table produtos(
 	codigo varchar(60) not null,
 	nome varchar(80) not null,
 	fabricante varchar(80) not null,
+	valor varchar(10) not null,
 	PRIMARY KEY (codigo_produtos),
 	UNIQUE (codigo)
 );
