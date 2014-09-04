@@ -36,3 +36,16 @@ create table clientes(
 	PRIMARY KEY (codigo_cliente),
 	UNIQUE (telefone)
 );
+
+-- CRIA TABELA PEDIDO
+create table pedidos(
+	codigo int not null auto_increment,
+	codigo_produto int not null,
+	codigo_cliente int not null,
+	situacao varchar(10) not null,
+	
+	PRIMARY KEY (codigo),
+	FOREIGN KEY (codigo_produto) references produtos(codigo_produtos),
+	FOREIGN KEY (codigo_cliente) references clientes(codigo_cliente),
+	UNIQUE (codigo)
+);
